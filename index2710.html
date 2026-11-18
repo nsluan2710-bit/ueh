@@ -1,0 +1,2686 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UEH ĐG&PTCK Studio — 63 Công Thức, 5 Đề Thi & AI Gia Sư</title>
+
+  <!-- Google Fonts: Be Vietnam Pro & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ueh: {
+              deep: '#004B54',
+              teal: '#005F69',
+              cyan: '#008B99',
+              orange: '#F36F21',
+              orangeBright: '#FF8534',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- KaTeX CDN for crisp financial formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    /* ==================== ETHEREAL UEH CAMPUS BACKGROUND & MOTION ==================== */
+    @keyframes kenBurnsPan {
+      0% {
+        transform: scale(1.08) translate3d(-2.2%, -1%, 0);
+      }
+      50% {
+        transform: scale(1.16) translate3d(2.2%, 1.2%, 0);
+      }
+      100% {
+        transform: scale(1.08) translate3d(-2.2%, -1%, 0);
+      }
+    }
+
+    @keyframes floatOrb1 {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      33% { transform: translate3d(60px, -45px, 0) scale(1.12); }
+      66% { transform: translate3d(-35px, 35px, 0) scale(0.94); }
+    }
+
+    @keyframes floatOrb2 {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-70px, 50px, 0) scale(1.15); }
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .campus-bg-img {
+      animation: kenBurnsPan 34s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .orb-1 { animation: floatOrb1 18s ease-in-out infinite; }
+    .orb-2 { animation: floatOrb2 22s ease-in-out infinite; }
+    .float-slow { animation: gentleFloat 6s ease-in-out infinite; }
+
+    /* Silver-White Frosted Glassmorphism Surface Tokens (Default Light Mode) */
+    .glass-panel {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(241, 245, 249, 0.78));
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 18px 45px -15px rgba(15, 52, 62, 0.14), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+    }
+
+    html.dark .glass-panel {
+      background: rgba(6, 44, 50, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 18px 45px -12px rgba(0, 20, 24, 0.55);
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(226, 232, 240, 0.68));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(203, 213, 225, 0.75);
+      box-shadow: 0 6px 20px -8px rgba(15, 52, 62, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    html.dark .glass-card {
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: none;
+    }
+
+    /* Cinema Mode: Reveal full UEH campus brightness */
+    body.cinema-mode #bg-overlay {
+      opacity: 0.24 !important;
+    }
+    body.cinema-mode .glass-panel {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.66), rgba(241, 245, 249, 0.56));
+    }
+    html.dark body.cinema-mode .glass-panel {
+      background: rgba(0, 42, 48, 0.42);
+    }
+
+    /* 3D Flashcard Flip */
+    .perspective-1400 {
+      perspective: 1400px;
+    }
+    .fc-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-style: preserve-3d;
+    }
+    .fc-inner.is-flipped {
+      transform: rotateY(180deg);
+    }
+    .fc-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .fc-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Hero 3D Tilt & Luminous Border */
+    .hero-tilt {
+      transition: transform 0.22s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes borderGlowMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-luminous-ring {
+      background: linear-gradient(120deg, #e2e8f0, #ffffff, rgba(0, 139, 153, 0.65), rgba(243, 111, 33, 0.72), #cbd5e1);
+      background-size: 250% 250%;
+      animation: borderGlowMove 8s ease infinite;
+      padding: 2.5px;
+      border-radius: 30px;
+    }
+
+    html.dark .hero-luminous-ring {
+      background: linear-gradient(120deg, rgba(0, 139, 153, 0.75), rgba(243, 111, 33, 0.85), rgba(56, 189, 248, 0.65), rgba(0, 95, 105, 0.8));
+      background-size: 250% 250%;
+    }
+
+    /* KaTeX Overflow & Sizing */
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.4rem 0.2rem;
+      margin: 0.45rem 0 !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .katex {
+      font-size: 1.07em;
+    }
+    @media (max-width: 640px) {
+      .katex { font-size: 0.94em; }
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(243, 111, 33, 0.45); border-radius: 999px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Typing Dots for AI Chatbot */
+    @keyframes bounceDot {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+    .typing-dot { animation: bounceDot 1.2s infinite ease-in-out both; }
+    .typing-dot:nth-child(2) { animation-delay: 0.18s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.36s; }
+  </style>
+</head>
+<body class="font-sans min-h-screen bg-slate-100 dark:bg-[#001F24] text-slate-800 dark:text-white overflow-x-hidden relative selection:bg-ueh-orange/25">
+
+  <!-- ==================== FIXED FULL-BLEED UEH CAMPUS SILVER-WHITE WATERMARK BACKGROUND ==================== -->
+  <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
+    <!-- Moving UEH Campus Image (image_42eac9.jpg) with graceful fallback -->
+    <img id="campus-bg-img" src="image_42eac9.jpg" alt="Khuôn viên Đại học Kinh tế TP.HCM (UEH)"
+      onerror="this.onerror=null; this.style.display='none'; document.getElementById('campus-fallback-bg').classList.remove('hidden');"
+      class="campus-bg-img w-full h-full object-cover object-center brightness-105 contrast-95 saturate-90 dark:brightness-90 dark:saturate-100" />
+    <!-- Fallback ethereal silver-white backdrop if local file is unavailable -->
+    <div id="campus-fallback-bg" class="hidden campus-bg-img w-full h-full bg-gradient-to-br from-slate-100 via-white to-teal-50 dark:from-[#00343B] dark:via-[#005F69] dark:to-[#008B99]"></div>
+
+    <!-- Luminous Silver-White Frosted Overlay (Chìm tinh tế) -->
+    <div id="bg-overlay" class="absolute inset-0 transition-opacity duration-500 bg-gradient-to-b from-white/80 via-slate-100/72 to-slate-200/82 dark:from-[#002227]/85 dark:via-[#003D45]/78 dark:to-[#00171B]/92"></div>
+
+    <!-- Ethereal Floating Silver & UEH Luminous Orbs -->
+    <div class="orb-1 absolute -top-24 -left-24 w-[440px] h-[440px] rounded-full bg-sky-200/45 dark:bg-ueh-cyan/30 blur-[110px]"></div>
+    <div class="orb-2 absolute top-1/3 -right-28 w-[460px] h-[460px] rounded-full bg-orange-200/35 dark:bg-ueh-orange/25 blur-[120px]"></div>
+    <div class="orb-1 absolute -bottom-32 left-1/3 w-[400px] h-[400px] rounded-full bg-slate-200/60 dark:bg-teal-300/20 blur-[110px]"></div>
+  </div>
+
+  <!-- ==================== FLOATING GLASS NAVBAR ==================== -->
+  <header class="sticky top-0 z-40 px-3 sm:px-6 pt-3 pb-1">
+    <nav class="max-w-7xl mx-auto glass-panel rounded-2xl px-3 sm:px-5 py-2.5 flex items-center justify-between gap-2">
+      <!-- UEH Brand -->
+      <button type="button" onclick="switchView('home')" class="flex items-center gap-2.5 text-left group shrink-0">
+        <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-ueh-teal border border-white/25 shadow-md flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          <img src="image_41fa88.png" alt="UEH Logo"
+            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+            class="w-full h-full object-cover" />
+          <div class="hidden flex flex-col items-center justify-center leading-none">
+            <span class="text-white font-black text-sm tracking-tight">UEH</span>
+            <span class="text-ueh-orange font-extrabold text-[6px] tracking-widest">UNIV</span>
+          </div>
+        </div>
+        <div class="hidden sm:block">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-sm tracking-tight text-slate-900 dark:text-white">UEH ĐG&amp;PTCK</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[10px] font-extrabold bg-ueh-orange text-white">63 CT</span>
+          </div>
+          <p class="text-[11px] text-slate-600 dark:text-teal-200/80 font-medium">Không gian luyện thi thông minh</p>
+        </div>
+      </button>
+
+      <!-- Desktop & Tablet Navigation Links -->
+      <div class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-0.5" role="tablist">
+        <button data-nav="home" onclick="switchView('home')" class="nav-btn px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex items-center gap-1.5">
+          <span>Trang chủ</span>
+        </button>
+        <button data-nav="flashcards" onclick="switchView('flashcards')" class="nav-btn px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex items-center gap-1.5">
+          <span>Flashcards</span>
+          <span class="hidden md:inline px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">63</span>
+        </button>
+        <button data-nav="exams" onclick="switchView('exams')" class="nav-btn px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex items-center gap-1.5">
+          <span>Trắc nghiệm</span>
+          <span class="hidden md:inline px-1.5 py-0.2 rounded-full text-[10px] bg-ueh-orange text-white">5 Đề</span>
+        </button>
+        <button data-nav="notes" onclick="switchView('notes')" class="nav-btn px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex items-center gap-1.5">
+          <span>Ghi chú</span>
+        </button>
+        <button data-nav="ai" onclick="switchView('ai')" class="nav-btn px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex items-center gap-1.5">
+          <span>🤖 AI Gia Sư</span>
+        </button>
+      </div>
+
+      <!-- Right Action Buttons -->
+      <div class="flex items-center gap-1.5 shrink-0">
+        <!-- Cinema Mode Toggle -->
+        <button id="btn-cinema" type="button" onclick="toggleCinemaMode()" title="Bật/Tắt chế độ ngắm rõ nền trường UEH (Cinema Mode)"
+          class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl bg-slate-200/75 dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-ueh-deep dark:text-white border border-slate-300/70 dark:border-white/20 text-xs font-bold transition-all active:scale-95">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+          </svg>
+          <span class="hidden xl:inline">Ngắm UEH</span>
+        </button>
+
+        <!-- Light Silver / Dark Glass Mode -->
+        <button id="btn-theme" type="button" onclick="toggleTheme()" title="Chuyển chế độ Trắng Bạc / Kính Tối"
+          class="p-2 rounded-xl bg-slate-200/75 dark:bg-white/15 hover:bg-slate-300/80 dark:hover:bg-white/25 text-ueh-deep dark:text-white border border-slate-300/70 dark:border-white/20 transition-all active:scale-95">
+          <svg id="icon-sun" class="w-4 h-4 sm:w-5 sm:h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg id="icon-moon" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 py-5 sm:py-7 pb-24 space-y-6">
+
+    <!-- ==================== VIEW 1: HOME (HERO THUMBNAIL + STATS) ==================== -->
+    <section id="view-home" class="space-y-6">
+      <!-- Hero Thumbnail Card with 3D Tilt & Metallic Silver-UEH Border -->
+      <div class="hero-luminous-ring shadow-2xl shadow-slate-400/35 dark:shadow-ueh-deep/50">
+      <div id="hero-card" class="hero-tilt glass-panel rounded-[28px] overflow-hidden relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+          <!-- Left: Crisp UEH Campus Thumbnail Showcase with Parallax -->
+          <div class="lg:col-span-6 relative min-h-[260px] sm:min-h-[340px] lg:min-h-[430px] overflow-hidden group">
+            <img id="hero-parallax-img" src="image_42eac9.jpg" alt="UEH Campus Thumbnail"
+              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              class="w-full h-full object-cover object-center scale-105 transition-transform duration-300 ease-out" />
+            <div class="hidden w-full h-full bg-gradient-to-br from-slate-200 via-white to-teal-100 dark:from-ueh-deep dark:via-ueh-teal dark:to-ueh-cyan flex items-center justify-center p-8">
+              <div class="text-center">
+                <div class="text-6xl font-black text-ueh-teal dark:text-white tracking-tight">UEH</div>
+                <div class="text-lg font-extrabold text-ueh-orange tracking-[0.28em] mt-1">UNIVERSITY</div>
+              </div>
+            </div>
+            <!-- Light airy silver-teal gradient blend -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#00343B]/65 via-transparent to-white/15"></div>
+
+            <!-- Floating UEH Badge on Thumbnail -->
+            <div class="absolute top-4 left-4 flex items-center gap-2.5 bg-white/88 dark:bg-[#004B54]/85 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/80 dark:border-white/25 shadow-xl float-slow">
+              <div class="w-9 h-9 rounded-xl overflow-hidden bg-ueh-teal border border-white/20 flex items-center justify-center">
+                <img src="image_41fa88.png" alt="UEH Badge"
+                  onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                  class="w-full h-full object-cover" />
+                <span class="hidden text-white font-black text-xs">UEH</span>
+              </div>
+              <div class="leading-tight">
+                <div class="text-ueh-deep dark:text-white font-extrabold text-xs tracking-wide">ĐẠI HỌC KINH TẾ TP.HCM</div>
+                <div class="text-ueh-orange font-bold text-[10px]">University of Economics Ho Chi Minh City</div>
+              </div>
+            </div>
+
+            <!-- Bottom caption on image -->
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-2 text-white">
+              <span class="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 text-xs font-bold shadow-sm">
+                Khuôn viên UEH • Không gian Trắng Bạc
+              </span>
+              <button type="button" onclick="toggleCinemaMode()" class="px-3 py-1 rounded-full bg-ueh-orange/95 hover:bg-ueh-orange text-xs font-bold shadow">
+                Ngắm nền rõ
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Hero Text & Quick Launch (with subtle UEH watermark background) -->
+          <div class="lg:col-span-6 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-5 relative overflow-hidden">
+            <!-- Subtle chìm watermark inside Hero right panel -->
+            <img src="image_42eac9.jpg" alt="" aria-hidden="true" onerror="this.style.display='none';"
+              class="absolute inset-0 w-full h-full object-cover object-center opacity-[0.07] dark:opacity-[0.06] pointer-events-none select-none scale-110" />
+            <div class="space-y-3.5 relative z-10">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ueh-orange/15 border border-ueh-orange/35 text-ueh-orange dark:text-ueh-orangeBright text-xs font-extrabold tracking-wide">
+                <span class="w-2 h-2 rounded-full bg-ueh-orange animate-ping"></span>
+                <span>PHIÊN BẢN TRẮNG BẠC • CHUẨN TÀI LIỆU PDF</span>
+              </div>
+
+              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight text-slate-900 dark:text-white">
+                ĐỊNH GIÁ &amp; PHÂN TÍCH<br />
+                <span class="bg-gradient-to-r from-ueh-teal via-ueh-cyan to-ueh-orange dark:from-teal-200 dark:via-white dark:to-ueh-orangeBright bg-clip-text text-transparent">
+                  CHỨNG KHOÁN — UEH
+                </span>
+              </h1>
+
+              <!-- Hero Highlight Stat Bar -->
+              <div class="flex flex-wrap items-center gap-2 pt-0.5">
+                <span class="px-3 py-1.5 rounded-xl bg-ueh-teal/25 border border-ueh-cyan/40 text-xs font-extrabold text-ueh-deep dark:text-teal-200">⚡ 63 Công thức</span>
+                <span class="px-3 py-1.5 rounded-xl bg-ueh-orange/20 border border-ueh-orange/40 text-xs font-extrabold text-ueh-orange dark:text-orange-200">🎯 5 Đề thi • 150 Câu</span>
+                <span class="px-3 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-xs font-extrabold text-emerald-700 dark:text-emerald-200">🤖 AI Gia sư 24/7</span>
+              </div>
+
+              <p class="text-sm text-slate-700 dark:text-teal-100/85 leading-relaxed">
+                Chinh phục trọn vẹn môn <strong>ĐG&amp;PTCK</strong> (Chương 2, 4, 5, 6) với hệ thống Flashcards 3D chuẩn KaTeX, <strong>5 đề thi trắc nghiệm chuyên sâu</strong>, sổ tay ghi chú bẫy thi và <strong>UEH AI Gia Sư</strong> đọc hiểu toàn bộ môn học.
+              </p>
+            </div>
+
+            <!-- 4 Quick Action Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-10">
+              <button type="button" onclick="switchView('flashcards')"
+                class="flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-ueh-teal to-ueh-cyan hover:brightness-110 text-white font-bold shadow-lg shadow-ueh-teal/30 transition-all active:scale-95">
+                <div class="text-left">
+                  <div class="text-sm font-extrabold">Luyện 63 Flashcards</div>
+                  <div class="text-[11px] text-teal-100 font-medium">Lật thẻ 3D • Lưu tiến độ</div>
+                </div>
+                <span class="text-xl">⚡</span>
+              </button>
+
+              <button type="button" onclick="switchView('exams')"
+                class="flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-ueh-orange to-ueh-orangeBright hover:brightness-110 text-white font-bold shadow-lg shadow-ueh-orange/30 transition-all active:scale-95">
+                <div class="text-left">
+                  <div class="text-sm font-extrabold">5 Đề Thi (150 Câu)</div>
+                  <div class="text-[11px] text-orange-100 font-medium">30 câu/đề • Thang điểm 10</div>
+                </div>
+                <span class="text-xl">🎯</span>
+              </button>
+
+              <button type="button" onclick="switchView('notes')"
+                class="flex items-center justify-between p-4 rounded-2xl glass-card hover:bg-white/20 dark:text-white text-slate-900 font-bold transition-all active:scale-95">
+                <div class="text-left">
+                  <div class="text-sm font-extrabold">Ghi Chú Học Nhanh</div>
+                  <div class="text-[11px] opacity-75 font-medium">Cheat Sheet + Sổ tay cá nhân</div>
+                </div>
+                <span class="text-xl">📘</span>
+              </button>
+
+              <button type="button" onclick="switchView('ai')"
+                class="flex items-center justify-between p-4 rounded-2xl glass-card hover:bg-white/20 dark:text-white text-slate-900 font-bold transition-all active:scale-95">
+                <div class="text-left">
+                  <div class="text-sm font-extrabold">UEH AI Gia Sư</div>
+                  <div class="text-[11px] opacity-75 font-medium">Giải bài tập &amp; công thức 24/7</div>
+                </div>
+                <span class="text-xl">🤖</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Dashboard Stats Row -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="glass-panel rounded-2xl p-4 sm:p-5 space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-teal-200">
+            <span>CÔNG THỨC ĐÃ THUỘC</span>
+            <span id="stat-mastered-pct" class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400">0%</span>
+          </div>
+          <div id="stat-mastered" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">0 / 63</div>
+          <div class="w-full h-2 rounded-full bg-slate-200 dark:bg-white/10 overflow-hidden">
+            <div id="stat-mastered-bar" class="h-full bg-gradient-to-r from-emerald-400 to-ueh-cyan transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-4 sm:p-5 space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-teal-200">
+            <span>CẦN ÔN LẠI / GHIM</span>
+            <span class="text-ueh-orange">★</span>
+          </div>
+          <div id="stat-review-pin" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">0 / 0</div>
+          <p class="text-[11px] text-slate-600 dark:text-teal-200/75">Đánh dấu để tập trung ôn thi</p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-4 sm:p-5 space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-teal-200">
+            <span>ĐIỂM CAO NHẤT (5 ĐỀ)</span>
+            <span class="text-ueh-orange">🏆</span>
+          </div>
+          <div id="stat-best-exam" class="text-2xl sm:text-3xl font-black text-ueh-orange">— / 10</div>
+          <p id="stat-exams-done" class="text-[11px] text-slate-600 dark:text-teal-200/75">Đã hoàn thành 0/5 đề thi</p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-4 sm:p-5 space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-teal-200">
+            <span>GHI CHÚ CÁ NHÂN</span>
+            <span class="text-ueh-cyan">✎</span>
+          </div>
+          <div id="stat-notes-count" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">0</div>
+          <p class="text-[11px] text-slate-600 dark:text-teal-200/75">Lưu tự động trên trình duyệt</p>
+        </div>
+      </div>
+
+      <!-- Chapter Breakdown Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <button type="button" onclick="jumpToChapter('ch2')" class="glass-panel rounded-2xl p-5 text-left hover:-translate-y-1 transition-all group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold bg-ueh-cyan/25 text-ueh-teal dark:text-teal-200">CHƯƠNG 2</span>
+            <span class="text-xs font-bold text-ueh-orange">11 công thức →</span>
+          </div>
+          <h3 class="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-ueh-orange transition-colors">Mức sinh lời &amp; Rủi ro</h3>
+          <p class="text-xs text-slate-600 dark:text-teal-100/70 mt-1">TSSL tuyệt đối, %, hình học, số học, IRR, E(R), Phương sai &amp; Độ lệch chuẩn.</p>
+        </button>
+
+        <button type="button" onclick="jumpToChapter('ch4')" class="glass-panel rounded-2xl p-5 text-left hover:-translate-y-1 transition-all group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold bg-ueh-cyan/25 text-ueh-teal dark:text-teal-200">CHƯƠNG 4</span>
+            <span class="text-xs font-bold text-ueh-orange">34 công thức →</span>
+          </div>
+          <h3 class="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-ueh-orange transition-colors">Phân tích Công ty</h3>
+          <p class="text-xs text-slate-600 dark:text-teal-100/70 mt-1">Thanh toán, Tạo vốn, Bảo chứng, Sinh lời, EPS/DPS/BVPS, P/E, P/B, ROA, ROE DuPont, g.</p>
+        </button>
+
+        <button type="button" onclick="jumpToChapter('ch5')" class="glass-panel rounded-2xl p-5 text-left hover:-translate-y-1 transition-all group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold bg-ueh-cyan/25 text-ueh-teal dark:text-teal-200">CHƯƠNG 5</span>
+            <span class="text-xs font-bold text-ueh-orange">7 công thức →</span>
+          </div>
+          <h3 class="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-ueh-orange transition-colors">Định giá Cổ phiếu</h3>
+          <p class="text-xs text-slate-600 dark:text-teal-100/70 mt-1">Mệnh giá, Thư giá, Mô hình chiết khấu cổ tức DDM (3 TH), Pn, Định giá P/E &amp; P/B.</p>
+        </button>
+
+        <button type="button" onclick="jumpToChapter('ch6')" class="glass-panel rounded-2xl p-5 text-left hover:-translate-y-1 transition-all group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold bg-ueh-cyan/25 text-ueh-teal dark:text-teal-200">CHƯƠNG 6</span>
+            <span class="text-xs font-bold text-ueh-orange">11 công thức →</span>
+          </div>
+          <h3 class="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-ueh-orange transition-colors">Định giá Trái phiếu</h3>
+          <p class="text-xs text-slate-600 dark:text-teal-100/70 mt-1">PV 4 loại trái phiếu, Y, YTM, YTC, Macaulay/Modified Duration, Convexity &amp; dP/P.</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: FLASHCARDS 3D (63 THẺ) ==================== -->
+    <section id="view-flashcards" class="hidden space-y-5">
+      <!-- Filter & Search Bar -->
+      <div class="glass-panel rounded-2xl p-4 sm:p-5 space-y-3.5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <!-- Chapter Pills -->
+          <div id="fc-chapter-filters" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5"></div>
+
+          <!-- Search Input -->
+          <div class="relative w-full md:w-72">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <input id="fc-search" type="text" placeholder="Tìm tên công thức..."
+              class="w-full pl-9 pr-3 py-2 rounded-xl bg-white/90 dark:bg-white/10 border border-slate-300/80 dark:border-white/15 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-ueh-orange" />
+          </div>
+        </div>
+
+        <!-- Status Filter + Shuffle + Reset -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-slate-200/80 dark:border-white/10">
+          <div id="fc-status-filters" class="flex items-center gap-1.5 flex-wrap"></div>
+          <div class="flex items-center gap-2">
+            <span id="fc-counter" class="px-3 py-1.5 rounded-xl bg-ueh-teal text-white text-xs font-extrabold shadow-sm">Thẻ 1 / 63</span>
+            <button type="button" onclick="shuffleFlashcards()"
+              class="px-3 py-1.5 rounded-xl glass-card hover:bg-white text-xs font-bold text-slate-800 dark:text-white transition-all active:scale-95">
+              🔀 Xáo trộn
+            </button>
+            <button type="button" onclick="openConfirmModal('resetProgress')"
+              class="px-3 py-1.5 rounded-xl bg-rose-500/15 hover:bg-rose-500 text-rose-700 dark:text-rose-200 hover:text-white border border-rose-500/30 text-xs font-bold transition-all">
+              Reset tiến độ
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div id="fc-empty" class="hidden glass-panel rounded-3xl p-10 text-center space-y-4">
+        <div class="text-5xl">✨</div>
+        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Không có thẻ nào khớp bộ lọc</h3>
+        <p class="text-sm text-slate-600 dark:text-teal-100/80">Thử chuyển về "Tất cả" hoặc xóa từ khóa tìm kiếm nhé!</p>
+        <button type="button" onclick="resetFcFilters()" class="px-5 py-2.5 rounded-xl bg-ueh-orange text-white font-bold text-sm">Xem tất cả 63 thẻ</button>
+      </div>
+
+      <!-- 3D Flashcard Stage -->
+      <div id="fc-stage" class="max-w-3xl mx-auto space-y-5">
+        <div id="fc-wrapper" class="perspective-1400 w-full h-[430px] sm:h-[450px] cursor-pointer select-none">
+          <div id="fc-inner" class="fc-inner">
+            <!-- FRONT FACE (with subtle UEH campus chìm watermark) -->
+            <div class="fc-face glass-panel rounded-[28px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden">
+              <img src="image_42eac9.jpg" alt="" aria-hidden="true" onerror="this.style.display='none';"
+                class="absolute inset-0 w-full h-full object-cover object-center opacity-[0.08] dark:opacity-[0.06] pointer-events-none select-none" />
+              <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-ueh-cyan via-slate-300 to-ueh-orange"></div>
+
+              <div class="flex items-start justify-between gap-2 pt-1 relative z-10">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span id="fc-front-chapter" class="px-3 py-1 rounded-full text-xs font-extrabold bg-ueh-teal text-white shadow-sm">Chương 2</span>
+                  <span id="fc-front-group" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200/80 dark:bg-white/15 text-ueh-deep dark:text-teal-100">Nhóm</span>
+                  <span id="fc-front-status" class="hidden px-2.5 py-1 rounded-full text-xs font-extrabold"></span>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button id="btn-fc-pin" type="button" onclick="event.stopPropagation(); togglePinCurrent();" title="Ghim thẻ này"
+                    class="p-2 rounded-xl bg-white/80 dark:bg-white/10 hover:bg-ueh-orange/30 border border-slate-300/70 dark:border-white/20 text-sm transition-all">
+                    📌
+                  </button>
+                  <span id="fc-front-id" class="text-xs font-black opacity-60">#01</span>
+                </div>
+              </div>
+
+              <div class="my-auto text-center space-y-4 px-2 relative z-10">
+                <span class="text-xs font-extrabold uppercase tracking-[0.18em] text-ueh-orange">Tên công thức / Chỉ tiêu</span>
+                <h2 id="fc-front-title" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-snug"></h2>
+                <p id="fc-front-hint" class="inline-block text-xs sm:text-sm px-4 py-2 rounded-2xl bg-white/85 dark:bg-white/10 text-slate-700 dark:text-teal-100 border border-slate-200/90 dark:border-white/15 shadow-sm"></p>
+              </div>
+
+              <div class="text-center text-xs font-semibold opacity-75 relative z-10">
+                Chạm vào thẻ hoặc nhấn <kbd class="px-2 py-0.5 rounded bg-slate-200 dark:bg-white/20 font-mono">Space</kbd> để lật xem công thức KaTeX
+              </div>
+            </div>
+
+            <!-- BACK FACE -->
+            <div class="fc-face fc-back glass-panel rounded-[28px] p-5 sm:p-7 flex flex-col justify-between overflow-hidden border-2 border-ueh-orange/50">
+              <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-ueh-orange to-ueh-cyan"></div>
+
+              <div class="flex items-center justify-between gap-2 pt-1">
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-ueh-orange text-white">Đáp án chuẩn KaTeX</span>
+                <span id="fc-back-title" class="text-xs sm:text-sm font-bold truncate max-w-[60%] opacity-85"></span>
+              </div>
+
+              <div class="my-auto space-y-3 overflow-y-auto max-h-[300px] py-2 pr-1">
+                <div id="fc-back-formula" class="rounded-2xl p-4 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white border border-slate-200 dark:border-ueh-cyan/30 shadow-inner text-center overflow-x-auto"></div>
+
+                <div id="fc-back-vars" class="text-xs sm:text-sm rounded-xl p-3 bg-white/80 dark:bg-white/10 text-slate-800 dark:text-teal-100 border border-slate-200 dark:border-white/15 leading-relaxed"></div>
+
+                <div id="fc-back-tip" class="text-xs sm:text-sm rounded-xl p-3 bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-300 dark:border-emerald-400/30 text-emerald-900 dark:text-emerald-200 leading-relaxed"></div>
+
+                <div id="fc-back-trap" class="hidden text-xs sm:text-sm rounded-xl p-3 bg-orange-50 dark:bg-ueh-orange/20 border border-ueh-orange/50 text-orange-950 dark:text-orange-100 leading-relaxed"></div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs opacity-85">
+                <span>Phím tắt: <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/15 font-mono">1</kbd> Cần ôn • <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/15 font-mono">2</kbd> Đã thuộc</span>
+                <button type="button" onclick="event.stopPropagation(); askAiAboutCurrentCard();" class="text-ueh-orange font-extrabold hover:underline">
+                  Hỏi AI giải thích thêm →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <button type="button" onclick="prevFlashcard()"
+            class="order-3 sm:order-1 py-3 px-4 rounded-2xl glass-panel hover:bg-white/20 font-bold text-sm transition-all active:scale-95">
+            ← Thẻ trước
+          </button>
+          <button type="button" onclick="markCard('review')"
+            class="order-1 sm:order-2 py-3 px-4 rounded-2xl bg-ueh-orange hover:bg-ueh-orangeBright text-white font-extrabold text-sm shadow-lg shadow-ueh-orange/25 transition-all active:scale-95">
+            ↺ Cần ôn (1)
+          </button>
+          <button type="button" onclick="markCard('mastered')"
+            class="order-2 sm:order-3 py-3 px-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm shadow-lg shadow-emerald-500/25 transition-all active:scale-95">
+            ✓ Đã thuộc (2)
+          </button>
+          <button type="button" onclick="nextFlashcard()"
+            class="order-4 py-3 px-4 rounded-2xl bg-ueh-teal hover:bg-ueh-cyan text-white font-bold text-sm shadow-lg transition-all active:scale-95">
+            Thẻ tiếp →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: 5 EXAMS × 30 QUESTIONS ==================== -->
+    <section id="view-exams" class="hidden space-y-5">
+      <!-- Exam Selector Lobby -->
+      <div id="exam-lobby" class="space-y-5">
+        <div class="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-ueh-orange text-white">NGÂN HÀNG 150 CÂU HỎI CHUẨN UEH</span>
+            <h2 class="text-2xl sm:text-3xl font-black mt-2 text-slate-900 dark:text-white">5 Đề Trắc Nghiệm Tổng Hợp</h2>
+            <p class="text-sm text-slate-600 dark:text-teal-100/80 mt-1">
+              Mỗi đề gồm đúng <strong>30 câu hỏi</strong> (10 bài tập tính toán &amp; tình huống + 20 câu nhận diện công thức &amp; lý thuyết), thời gian 30 phút, chấm thang 10 và giải thích chi tiết bằng KaTeX.
+            </p>
+          </div>
+          <div class="shrink-0 text-right">
+            <div class="text-xs font-bold opacity-75">TỔNG NGÂN HÀNG</div>
+            <div class="text-3xl font-black text-ueh-orange">150 Câu</div>
+          </div>
+        </div>
+
+        <div id="exam-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- 5 Exam Cards injected via JS -->
+        </div>
+      </div>
+
+      <!-- Active Exam Runner -->
+      <div id="exam-runner" class="hidden space-y-4">
+        <!-- Exam Sticky Header -->
+        <div class="glass-panel rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="openConfirmModal('exitExam')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold">
+              ← Thoát
+            </button>
+            <div>
+              <h3 id="exam-run-title" class="font-extrabold text-sm sm:text-base">Đề số 1</h3>
+              <p id="exam-run-progress" class="text-xs opacity-80">Đã làm: 0 / 30 câu</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div id="exam-timer" class="px-4 py-1.5 rounded-xl bg-ueh-orange/20 border border-ueh-orange/40 text-ueh-orangeBright dark:text-ueh-orangeBright text-ueh-orange font-mono font-black text-base">
+              30:00
+            </div>
+            <button id="btn-submit-exam" type="button" onclick="openConfirmModal('submitExam')"
+              class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs sm:text-sm shadow-lg transition-all active:scale-95">
+              Nộp bài chấm điểm
+            </button>
+            <button id="btn-retake-exam" type="button" onclick="startExam(state.exam.examId)" class="hidden px-4 py-2 rounded-xl bg-ueh-orange hover:bg-ueh-orangeBright text-white font-extrabold text-xs sm:text-sm shadow-lg">
+              Làm lại đề này
+            </button>
+          </div>
+        </div>
+
+        <!-- Score Result Banner (shown after submit) -->
+        <div id="exam-result-banner" class="hidden glass-panel rounded-3xl p-6 border-2 border-ueh-orange/60">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div id="exam-grade-emoji" class="w-16 h-16 rounded-2xl bg-ueh-orange/20 flex items-center justify-center text-4xl">🏆</div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="exam-grade-label" class="px-3 py-0.5 rounded-full text-xs font-extrabold bg-emerald-500 text-white">XUẤT SẮC</span>
+                  <span id="exam-correct-count" class="text-sm font-bold opacity-85">28 / 30 câu đúng</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-black mt-1">Điểm số: <span id="exam-score-10" class="text-ueh-orange">9.33 / 10</span></h3>
+                <p class="text-xs opacity-80 mt-0.5">Nhấn vào từng số câu trên bảng chọn nhanh để xem đáp án và lời giải KaTeX chi tiết.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="exitExamToLobby()" class="px-4 py-2.5 rounded-xl glass-card font-bold text-sm">Chọn đề khác</button>
+              <button type="button" onclick="startExam(state.exam.examId)" class="px-4 py-2.5 rounded-xl bg-ueh-orange text-white font-extrabold text-sm">Làm lại</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Exam Grid: Question Area + 30-Question Map -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+          <!-- Question Box -->
+          <div class="lg:col-span-8 glass-panel rounded-3xl p-5 sm:p-7 space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span id="exam-q-num" class="px-3 py-1 rounded-full text-xs font-extrabold bg-ueh-teal text-white">Câu 1 / 30</span>
+              <span id="exam-q-tag" class="px-3 py-1 rounded-full text-xs font-bold bg-ueh-orange/20 text-ueh-orangeBright dark:text-ueh-orangeBright text-ueh-orange">Bài tập tính toán</span>
+            </div>
+
+            <div id="exam-q-text" class="text-base sm:text-lg font-bold leading-relaxed p-4 rounded-2xl bg-white/95 dark:bg-slate-900/85 text-slate-900 dark:text-white border border-white/20 overflow-x-auto"></div>
+
+            <div id="exam-options" class="space-y-3"></div>
+
+            <!-- Explanation Box (Visible after Submit) -->
+            <div id="exam-explanation" class="hidden rounded-2xl p-4 bg-emerald-500/15 border border-emerald-400/40 space-y-1.5">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">Lời giải chi tiết:</div>
+              <div id="exam-explanation-text" class="text-sm leading-relaxed overflow-x-auto"></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <button type="button" onclick="jumpExamQuestion(state.exam.currentQ - 1)" class="px-4 py-2.5 rounded-xl glass-card hover:bg-white/20 font-bold text-sm">
+                ← Câu trước
+              </button>
+              <button type="button" onclick="jumpExamQuestion(state.exam.currentQ + 1)" class="px-5 py-2.5 rounded-xl bg-ueh-teal hover:bg-ueh-cyan text-white font-bold text-sm">
+                Câu tiếp →
+              </button>
+            </div>
+          </div>
+
+          <!-- 30-Question Map -->
+          <div class="lg:col-span-4 glass-panel rounded-3xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <h4 class="font-extrabold text-sm">Bảng chọn nhanh 30 câu</h4>
+              <span class="text-[11px] opacity-75">Click để chuyển</span>
+            </div>
+            <div id="exam-q-map" class="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-6 gap-2"></div>
+            <div class="flex flex-wrap gap-3 text-[11px] pt-2 border-t border-white/10 opacity-85">
+              <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-ueh-teal inline-block"></span> Đã chọn</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-ueh-orange inline-block"></span> Đang xem</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span> Đúng</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-rose-500 inline-block"></span> Sai</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: QUICK STUDY & PERSONAL NOTES ==================== -->
+    <section id="view-notes" class="hidden space-y-5">
+      <!-- Sub-tab Switcher -->
+      <div class="glass-panel rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="inline-flex p-1 rounded-xl bg-black/20 dark:bg-black/25 bg-slate-200/80 gap-1">
+          <button id="subtab-cheat" type="button" onclick="switchNoteSubtab('cheatsheet')" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all">
+            ⚡ Cheat Sheet 63 Công Thức
+          </button>
+          <button id="subtab-notebook" type="button" onclick="switchNoteSubtab('notebook')" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all">
+            ✎ Sổ Tay Ghi Chú Cá Nhân
+          </button>
+        </div>
+
+        <div id="cheat-controls" class="flex items-center gap-2 flex-wrap">
+          <input id="cs-search" type="text" placeholder="Tìm nhanh công thức, biến số..."
+            class="px-3.5 py-2 rounded-xl bg-white/10 dark:bg-white/10 bg-slate-100 border border-white/20 text-xs sm:text-sm dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-ueh-orange w-56 sm:w-64" />
+          <button id="btn-trap-only" type="button" onclick="toggleTrapOnly()"
+            class="px-3.5 py-2 rounded-xl bg-ueh-orange/20 hover:bg-ueh-orange text-ueh-orangeBright dark:text-ueh-orangeBright text-ueh-orange hover:text-white border border-ueh-orange/40 text-xs font-extrabold transition-all">
+            ⚠️ Chỉ xem Bẫy thi (Lỗi PDF)
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub-view A: Cheat Sheet Accordions -->
+      <div id="notes-cheatsheet" class="space-y-4"></div>
+
+      <!-- Sub-view B: Personal Notebook -->
+      <div id="notes-notebook" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <!-- Editor Form -->
+        <div class="lg:col-span-5 glass-panel rounded-3xl p-5 sm:p-6 space-y-4 h-fit">
+          <h3 class="text-lg font-extrabold flex items-center gap-2">
+            <span>📝</span>
+            <span id="note-form-title">Thêm ghi chú học nhanh</span>
+          </h3>
+          <input type="hidden" id="note-edit-id" value="" />
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold opacity-80">Gắn với công thức (Tùy chọn)</label>
+            <select id="note-formula-ref" class="w-full px-3 py-2.5 rounded-xl bg-slate-900/80 dark:bg-slate-900/90 bg-white text-slate-900 dark:text-white border border-white/20 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-ueh-orange">
+              <option value="">— Ghi chú tự do (Không gắn công thức) —</option>
+            </select>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold opacity-80">Tiêu đề ghi chú</label>
+            <input id="note-title-input" type="text" placeholder="VD: Mẹo bấm máy tính tìm YTM nhanh..."
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white/10 dark:bg-white/10 bg-slate-100 border border-white/20 text-sm dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-ueh-orange" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold opacity-80">Nội dung ghi chú (Hỗ trợ công thức LaTeX $...$)</label>
+            <textarea id="note-body-input" rows="5" placeholder="Nhập mẹo nhớ, ví dụ tính toán hoặc lưu ý của giảng viên UEH..."
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white/10 dark:bg-white/10 bg-slate-100 border border-white/20 text-sm dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-ueh-orange"></textarea>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="savePersonalNote()" class="flex-1 py-2.5 rounded-xl bg-ueh-orange hover:bg-ueh-orangeBright text-white font-extrabold text-sm shadow-lg transition-all active:scale-95">
+              Lưu ghi chú
+            </button>
+            <button id="btn-cancel-edit-note" type="button" onclick="clearNoteForm()" class="hidden px-4 py-2.5 rounded-xl glass-card font-bold text-sm">
+              Hủy sửa
+            </button>
+          </div>
+        </div>
+
+        <!-- Saved Notes List -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="glass-panel rounded-2xl p-4 flex flex-wrap items-center justify-between gap-2">
+            <span id="notebook-count-label" class="font-extrabold text-sm">Sổ tay của bạn (0 ghi chú)</span>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="copyAllNotes()" class="px-3 py-1.5 rounded-xl glass-card hover:bg-white/20 text-xs font-bold">
+                📋 Copy tất cả
+              </button>
+              <button type="button" onclick="exportNotesTxt()" class="px-3 py-1.5 rounded-xl bg-ueh-teal hover:bg-ueh-cyan text-white text-xs font-bold">
+                ⬇ Xuất file .TXT
+              </button>
+            </div>
+          </div>
+
+          <div id="notebook-list" class="space-y-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 5: FULLSCREEN UEH AI GIA SƯ ==================== -->
+    <section id="view-ai" class="hidden space-y-5">
+      <div class="glass-panel rounded-3xl overflow-hidden flex flex-col min-h-[72vh] max-h-[80vh]">
+        <!-- Fullscreen AI Header -->
+        <div class="px-5 sm:px-7 py-4 bg-gradient-to-r from-ueh-deep via-ueh-teal to-ueh-cyan text-white flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-2xl shadow">🎓</div>
+            <div>
+              <h2 class="font-black text-base sm:text-lg leading-tight">UEH AI Gia Sư — Định giá &amp; Phân tích Chứng khoán</h2>
+              <p class="text-xs text-teal-100 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Đã nạp toàn bộ 63 công thức (Chương 2, 4, 5, 6) &amp; 3 lỗi đính chính PDF</span>
+              </p>
+            </div>
+          </div>
+          <button type="button" onclick="clearChatHistory()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold transition-colors">
+            🗑 Làm mới cuộc trò chuyện
+          </button>
+        </div>
+
+        <!-- Quick Prompts Bar -->
+        <div class="px-4 sm:px-6 py-3 border-b border-slate-200 dark:border-white/10 flex items-center gap-2 overflow-x-auto no-scrollbar bg-slate-100/80 dark:bg-black/15">
+          <button type="button" onclick="sendQuickPrompt('Giải thích chi tiết mô hình ROE DuPont 3 nhân tố và ý nghĩa từng nhân tố')" class="shrink-0 px-3 py-1.5 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-xs font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors shadow-sm">📊 Giải thích mô hình DuPont</button>
+          <button type="button" onclick="sendQuickPrompt('Phân biệt Macaulay Duration và Modified Duration kèm ví dụ tính toán')" class="shrink-0 px-3 py-1.5 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-xs font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors shadow-sm">⏱ Macaulay vs Modified Duration</button>
+          <button type="button" onclick="sendQuickPrompt('3 lỗi in nhầm trong file PDF ĐG&PTCK là gì? Chỉ rõ cách sửa chuẩn')" class="shrink-0 px-3 py-1.5 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-xs font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors shadow-sm">⚠️ 3 lỗi in nhầm trong PDF</button>
+          <button type="button" onclick="sendQuickPrompt('Cho mình 1 bài tập DDM tăng trưởng 2 giai đoạn và giải chi tiết từng bước')" class="shrink-0 px-3 py-1.5 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-xs font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors shadow-sm">🧮 Bài tập DDM 2 giai đoạn</button>
+        </div>
+
+        <!-- Fullscreen Messages Area -->
+        <div id="ai-full-messages" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4"></div>
+
+        <!-- Fullscreen Input Area -->
+        <form onsubmit="handleFullChatSubmit(event)" class="p-4 border-t border-slate-200 dark:border-white/15 bg-slate-100/80 dark:bg-black/20 flex items-center gap-2.5">
+          <input id="ai-full-input" type="text" placeholder="Nhập câu hỏi công thức, bài tập tính ROA, ROE, DDM, YTM, Duration..."
+            class="flex-1 px-4 py-3 rounded-2xl bg-white dark:bg-white/10 text-slate-900 dark:text-white placeholder-slate-400 text-sm border border-slate-300 dark:border-white/20 focus:outline-none focus:ring-2 focus:ring-ueh-orange" />
+          <button type="submit" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-ueh-orange to-ueh-orangeBright hover:brightness-110 text-white font-extrabold text-sm shadow-lg transition-all active:scale-95 shrink-0">
+            Gửi câu hỏi →
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FLOATING UEH AI CHATBOT WIDGET ==================== -->
+  <!-- Floating Action Button -->
+  <button id="chat-fab" type="button" onclick="toggleChat()"
+    class="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3.5 rounded-full bg-gradient-to-r from-ueh-teal via-ueh-cyan to-ueh-orange text-white font-extrabold text-sm shadow-2xl shadow-ueh-orange/40 border border-white/30 hover:scale-105 transition-all active:scale-95">
+    <span class="text-lg">🤖</span>
+    <span class="hidden sm:inline">UEH AI Gia Sư</span>
+  </button>
+
+  <!-- Chat Window -->
+  <aside id="chat-drawer" class="fixed bottom-20 right-3 sm:right-5 z-50 w-[calc(100vw-1.5rem)] sm:w-[420px] max-h-[78vh] hidden flex-col glass-panel rounded-3xl overflow-hidden border border-white/25 shadow-2xl">
+    <!-- Header -->
+    <div class="px-4 py-3.5 bg-gradient-to-r from-ueh-deep via-ueh-teal to-ueh-cyan text-white flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center text-lg">🎓</div>
+        <div>
+          <div class="font-extrabold text-sm leading-tight">UEH AI Gia Sư ĐG&amp;PTCK</div>
+          <div class="text-[11px] text-teal-100 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Am hiểu trọn bộ 63 công thức</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-1">
+        <button type="button" onclick="clearChatHistory()" title="Xóa đoạn chat" class="p-1.5 rounded-lg hover:bg-white/15 text-xs">🗑</button>
+        <button type="button" onclick="toggleChat(false)" title="Thu gọn" class="p-1.5 rounded-lg hover:bg-white/15 font-bold text-sm">✕</button>
+      </div>
+    </div>
+
+    <!-- Quick Suggestion Chips -->
+    <div class="px-3 py-2 border-b border-slate-200 dark:border-white/10 flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-slate-100/80 dark:bg-black/10">
+      <button type="button" onclick="sendQuickPrompt('Giải thích chi tiết mô hình ROE DuPont 3 nhân tố')" class="shrink-0 px-2.5 py-1 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-[11px] font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors">ROE DuPont</button>
+      <button type="button" onclick="sendQuickPrompt('Phân biệt YTM và YTC trong định giá trái phiếu')" class="shrink-0 px-2.5 py-1 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-[11px] font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors">YTM vs YTC</button>
+      <button type="button" onclick="sendQuickPrompt('Liệt kê và đính chính các lỗi in nhầm trong file PDF ĐG&PTCK')" class="shrink-0 px-2.5 py-1 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-[11px] font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors">Lỗi sai PDF</button>
+      <button type="button" onclick="sendQuickPrompt('Ra 1 bài tập định giá cổ phiếu DDM tăng trưởng không đều kèm lời giải từng bước')" class="shrink-0 px-2.5 py-1 rounded-full bg-white dark:bg-white/15 hover:bg-ueh-orange hover:text-white text-[11px] font-bold text-ueh-deep dark:text-white border border-slate-200 dark:border-white/15 transition-colors">Bài tập DDM</button>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 min-h-[260px] max-h-[46vh]"></div>
+
+    <!-- Input Area -->
+    <form id="chat-form" onsubmit="handleChatSubmit(event)" class="p-3 border-t border-slate-200 dark:border-white/15 bg-slate-100/80 dark:bg-black/15 flex items-center gap-2">
+      <input id="chat-input" type="text" placeholder="Hỏi bất kỳ công thức hay bài tập ĐG&PTCK..."
+        class="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-white/10 text-slate-900 dark:text-white placeholder-slate-400 text-xs sm:text-sm border border-slate-300 dark:border-white/20 focus:outline-none focus:ring-2 focus:ring-ueh-orange" />
+      <button id="chat-send-btn" type="submit"
+        class="px-4 py-2.5 rounded-xl bg-ueh-orange hover:bg-ueh-orangeBright text-white font-extrabold text-xs sm:text-sm transition-all active:scale-95 shrink-0">
+        Gửi
+      </button>
+    </form>
+  </aside>
+
+  <!-- ==================== CUSTOM CONFIRMATION MODAL (NO alert/confirm) ==================== -->
+  <div id="confirm-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div class="glass-panel rounded-3xl max-w-md w-full p-6 space-y-4">
+      <h3 id="confirm-title" class="text-lg font-extrabold text-slate-900 dark:text-white">Xác nhận</h3>
+      <p id="confirm-desc" class="text-sm text-slate-600 dark:text-teal-100/85"></p>
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button type="button" onclick="closeConfirmModal()" class="px-4 py-2 rounded-xl glass-card font-bold text-sm">Hủy</button>
+        <button id="confirm-ok-btn" type="button" class="px-4 py-2 rounded-xl bg-ueh-orange hover:bg-ueh-orangeBright text-white font-extrabold text-sm">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-24 opacity-0 pointer-events-none z-50 px-5 py-3 rounded-2xl bg-[#00343B]/95 text-white border border-ueh-orange/50 shadow-2xl text-xs sm:text-sm font-bold transition-all duration-300">
+    Thông báo
+  </div>
+
+  <!-- ==================== APPLICATION JAVASCRIPT ==================== -->
+  <script>
+    const R = String.raw;
+
+    /* =========================================================================
+       1. COMPLETE DATASET: EXACTLY 63 FORMULAS FROM UEH ĐG&PTCK PDF
+       Ch.2 (11) + Ch.4 (34) + Ch.5 (7) + Ch.6 (11) = 63 Formulas
+       ========================================================================= */
+    const FORMULAS = [
+      // -------------------- CHƯƠNG 2: MỨC SINH LỜI VÀ RỦI RO (11) --------------------
+      {
+        id: 1, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Mức sinh lời',
+        title: 'Mức sinh lời bằng giá trị tuyệt đối',
+        hint: 'Tổng tiền lời thu được từ cổ tức và chênh lệch giá',
+        formula: R`$$\text{Mức sinh lời} = \text{Cổ tức} + \text{Chênh lệch giá}$$`,
+        vars: 'Cổ tức: thu nhập tiền mặt nhận trong kỳ; Chênh lệch giá = Giá bán − Giá mua.',
+        tip: 'Mẹo nhớ: Lời tuyệt đối = Tiền mặt nhận thêm + Lãi/lỗ vốn.'
+      },
+      {
+        id: 2, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Mức sinh lời',
+        title: 'Mức sinh lời bằng tỷ lệ phần trăm (%)',
+        hint: 'Tỷ suất cổ tức cộng tỷ suất lãi vốn theo giá ban đầu',
+        formula: R`$$r = \frac{\text{Cổ tức}}{\text{Giá ban đầu}} + \frac{\text{Giá lúc sau} - \text{Giá ban đầu}}{\text{Giá ban đầu}}$$`,
+        vars: 'Mẫu số luôn là Giá ban đầu (P0). Gồm 2 phần: Dividend Yield + Capital Gains Yield.',
+        tip: 'Mẹo nhớ: Chia cả hai vế của MSL tuyệt đối cho Giá ban đầu.'
+      },
+      {
+        id: 3, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Mức sinh lời nhiều kỳ',
+        title: 'Tổng mức sinh lời trong một khoảng thời gian',
+        hint: 'Tích của các hệ số tích lũy (1 + r) qua n giai đoạn',
+        formula: R`$$\text{Tổng MSL} = (1+r_1)(1+r_2)\dots(1+r_n)$$`,
+        vars: 'r1, r2, ..., rn là tỷ suất sinh lời của từng giai đoạn 1 đến n.',
+        tip: 'Mẹo nhớ: Lãi kép nên phải NHÂN các cụm (1 + r_t), không cộng trực tiếp.'
+      },
+      {
+        id: 4, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Mức sinh lời nhiều kỳ',
+        title: 'Mức sinh lời bình quân hình học (lũy kế)',
+        hint: 'Căn bậc n của Tổng mức sinh lời trừ đi 1',
+        formula: R`$$r_G = \sqrt[n]{(1+r_1)(1+r_2)\dots(1+r_n)} - 1$$`,
+        vars: 'n: số giai đoạn đầu tư; r_G phản ánh tốc độ tăng trưởng kép (CAGR).',
+        tip: 'Mẹo nhớ: Hình học = Căn bậc n của tích (1+r) rồi trừ 1. Luôn ≤ Bình quân số học.'
+      },
+      {
+        id: 5, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Mức sinh lời nhiều kỳ',
+        title: 'Mức sinh lời bình quân số học (giản đơn)',
+        hint: 'Trung bình cộng tỷ suất sinh lời các giai đoạn',
+        formula: R`$$r_A = \frac{r_1 + r_2 + \dots + r_n}{n}$$`,
+        vars: 'Tổng các TSSL từng kỳ chia đều cho số kỳ n.',
+        tip: 'Mẹo nhớ: Số học = Cộng hết chia n (dùng để dự báo 1 kỳ đơn lẻ).'
+      },
+      {
+        id: 6, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Mức sinh lời trọng số',
+        title: 'Mức sinh lời bình quân trọng số (IRR)',
+        hint: 'Lãi suất chiết khấu làm hiện giá dòng thu nhập bằng tiền vốn',
+        formula: R`$$\text{Tiền vốn} = \frac{\text{TN}_1}{(1+r)} + \frac{\text{TN}_2}{(1+r)^2} + \dots + \frac{\text{TN}_n}{(1+r)^n}$$`,
+        vars: 'Đặt IRR = r% → Giải phương trình tìm r%. TN_t là dòng thu nhập ròng năm t.',
+        tip: 'Mẹo nhớ: IRR là tỷ suất làm NPV = 0 (Hiện giá dòng tiền vào = Tiền vốn bỏ ra).'
+      },
+      {
+        id: 7, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Mức sinh lời kỳ vọng',
+        title: 'Mức sinh lời kỳ vọng E(R)',
+        hint: 'Tổng tích của TSSL từng trạng thái với xác suất xảy ra',
+        formula: R`$$E(R) = \sum_{i=1}^{n} R_i \times P_i$$`,
+        vars: 'R_i: TSSL từng giai đoạn/trạng thái; P_i: Xác suất tương ứng (Tổng P_i = 1).',
+        tip: 'Mẹo nhớ: Kỳ vọng = Tổng (TSSL × Xác suất).'
+      },
+      {
+        id: 8, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Đánh giá rủi ro (Lịch sử)',
+        title: 'Phương sai (Dữ liệu lịch sử quá khứ)',
+        hint: 'Bình quân bình phương độ lệch chia cho (n - 1)',
+        formula: R`$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(\bar{R} - R_i)^2$$`,
+        vars: 'R̄: TSSL bình quân số học; R_i: TSSL từng giai đoạn quá khứ; n: số quan sát.',
+        tip: 'Mẹo nhớ: Dữ liệu QUÁ KHỨ luôn chia cho (n − 1) để ước lượng không chệch.'
+      },
+      {
+        id: 9, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Đánh giá rủi ro (Lịch sử)',
+        title: 'Độ lệch chuẩn (Dữ liệu lịch sử quá khứ)',
+        hint: 'Căn bậc hai của Phương sai mẫu lịch sử',
+        formula: R`$$s = \sqrt{s^2} = \sqrt{\text{Phương sai}}$$`,
+        vars: 'Đo lường rủi ro tổng thể cùng đơn vị (%) với TSSL.',
+        tip: 'Mẹo nhớ: Độ lệch chuẩn luôn là Căn bậc hai của Phương sai.'
+      },
+      {
+        id: 10, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Đánh giá rủi ro (Tương lai)',
+        title: 'Phương sai (Dữ liệu dự đoán tương lai)',
+        hint: 'Tổng bình phương độ lệch nhân xác suất từng kịch bản',
+        formula: R`$$\sigma^2 = \sum_{i=1}^{n}\left(E(R) - R_i\right)^2 \times P_i$$`,
+        vars: 'E(R): TSSL kỳ vọng; R_i: TSSL kịch bản i; P_i: Xác suất kịch bản i.',
+        tip: 'Mẹo nhớ: TƯƠNG LAI có xác suất P_i nên KHÔNG chia (n-1) mà nhân trực tiếp P_i.'
+      },
+      {
+        id: 11, chapter: 'ch2', chapterLabel: 'Chương 2', group: 'Đánh giá rủi ro (Tương lai)',
+        title: 'Độ lệch chuẩn (Dữ liệu dự đoán tương lai)',
+        hint: 'Căn bậc hai của Phương sai dự đoán tương lai',
+        formula: R`$$\sigma = \sqrt{\sigma^2} = \sqrt{\text{Phương sai}}$$`,
+        vars: 'σ (sigma): độ lệch chuẩn đo rủi ro kỳ vọng tương lai.',
+        tip: 'Mẹo nhớ: σ càng lớn → biến động lợi suất càng mạnh → rủi ro càng cao.'
+      },
+
+      // -------------------- CHƯƠNG 4: PHÂN TÍCH CÔNG TY (34) --------------------
+      // Nhóm 1: Khả năng thanh toán (5)
+      {
+        id: 12, chapter: 'ch4', chapterLabel: 'Chương 4', group: '1. Khả năng thanh toán',
+        title: 'Vốn huy động thuần (Vốn lưu động ròng)',
+        hint: 'Hiệu số giữa Tổng TSLĐ và Tổng nợ ngắn hạn',
+        formula: R`$$\text{Vốn huy động thuần} = \text{Tổng TSLĐ} - \text{Tổng nợ ngắn hạn}$$`,
+        vars: 'Phản ánh phần tài sản ngắn hạn được tài trợ bằng nguồn vốn dài hạn.',
+        tip: 'Mẹo nhớ: Dương (+) chứng tỏ doanh nghiệp đủ TSLĐ trang trải nợ ngắn hạn.'
+      },
+      {
+        id: 13, chapter: 'ch4', chapterLabel: 'Chương 4', group: '1. Khả năng thanh toán',
+        title: 'Lưu lượng tiền mặt (Cash Flow)',
+        hint: 'Thu nhập ròng cộng lại chi phí khấu hao hàng năm',
+        formula: R`$$\text{Lưu lượng tiền mặt} = \text{Thu nhập ròng (lãi/lỗ)} + \text{Khấu hao hàng năm}$$`,
+        vars: 'Khấu hao là chi phí không bằng tiền nên phải cộng ngược lại vào lợi nhuận ròng.',
+        tip: 'Mẹo nhớ: Tiền thực tế vào túi = Lãi ròng + Khấu hao.'
+      },
+      {
+        id: 14, chapter: 'ch4', chapterLabel: 'Chương 4', group: '1. Khả năng thanh toán',
+        title: 'Chỉ số Tài sản lưu động (Current Ratio)',
+        hint: 'Tỷ lệ Tổng tài sản lưu động trên Tổng nợ ngắn hạn',
+        formula: R`$$\text{Current Ratio} = \frac{\text{Tổng tài sản lưu động}}{\text{Tổng nợ ngắn hạn}}$$`,
+        vars: 'Đo khả năng thanh toán hiện hành bằng toàn bộ TSLĐ.',
+        tip: 'Mẹo nhớ: Thanh toán HIỆN HÀNH lấy trọn bộ Tổng TSLĐ chia Nợ ngắn hạn.'
+      },
+      {
+        id: 15, chapter: 'ch4', chapterLabel: 'Chương 4', group: '1. Khả năng thanh toán',
+        title: 'Chỉ số Tài sản nhạy cảm (Quick Ratio)',
+        hint: 'Loại trừ Hàng tồn kho khỏi Tổng TSLĐ trước khi chia Nợ ngắn hạn',
+        formula: R`$$\text{Quick Ratio} = \frac{\text{Tổng tài sản lưu động} - \text{Hàng tồn kho}}{\text{Tổng nợ ngắn hạn}}$$`,
+        vars: 'Hàng tồn kho có tính thanh khoản thấp nhất trong TSLĐ nên bị trừ ra.',
+        tip: 'Mẹo nhớ: Thanh toán NHANH (Nhạy cảm) = (TSLĐ − Tồn kho) / Nợ ngắn hạn.'
+      },
+      {
+        id: 16, chapter: 'ch4', chapterLabel: 'Chương 4', group: '1. Khả năng thanh toán',
+        title: 'Chỉ số Tiền mặt (Cash Ratio)',
+        hint: 'Khả năng trả nợ tức thì bằng Tiền mặt và Chứng khoán khả mại',
+        formula: R`$$\text{Cash Ratio} = \frac{\text{Tiền mặt} + \text{Chứng khoán khả mại}}{\text{Tổng nợ ngắn hạn}}$$`,
+        vars: 'Chứng khoán khả mại là chứng khoán ngắn hạn dễ chuyển đổi thành tiền mặt.',
+        tip: 'Mẹo nhớ: Khắt khe nhất: chỉ tính Tiền + CK khả mại chia Nợ ngắn hạn.'
+      },
+
+      // Nhóm 2: Phương cách tạo vốn (7)
+      {
+        id: 17, chapter: 'ch4', chapterLabel: 'Chương 4', group: '2. Phương cách tạo vốn',
+        title: 'Tổng vốn dài hạn',
+        hint: 'Cấu trúc vốn dài hạn gồm Vốn cổ đông và Nợ vay dài hạn',
+        formula: R`$$\text{Tổng vốn dài hạn} = \text{Tổng vốn cổ đông} + \text{Nợ vay dài hạn}$$`,
+        vars: 'Là mẫu số chung cho các chỉ số tỷ trọng tạo vốn dài hạn.',
+        tip: 'Mẹo nhớ: Vốn dài hạn = Vốn chủ (Cổ đông) + Nợ dài hạn.'
+      },
+      {
+        id: 18, chapter: 'ch4', chapterLabel: 'Chương 4', group: '2. Phương cách tạo vốn',
+        title: 'Tổng vốn cổ đông',
+        hint: 'Gồm mệnh giá CPT, vốn điều lệ, TNGL và thặng dư vốn',
+        formula: R`$$\text{Tổng vốn cổ đông} = \text{Tổng mệnh giá CPT} + \text{VCP (vốn điều lệ)} + \text{TNGL} + \text{Thặng dư vốn}$$`,
+        vars: 'TNGL: Thu nhập giữ lại; CPT: Cổ phiếu thường.',
+        tip: 'Mẹo nhớ: Gom tất cả phần thuộc về cổ đông thường.'
+      },
+      {
+        id: 19, chapter: 'ch4', chapterLabel: 'Chương 4', group: '2. Phương cách tạo vốn',
+        title: 'Nợ vay dài hạn',
+        hint: 'Tổng mệnh giá trái phiếu cộng nợ vay ngân hàng dài hạn',
+        formula: R`$$\text{Nợ vay dài hạn} = \text{Tổng mệnh giá trái phiếu} + \text{Nợ vay ngân hàng}$$`,
+        vars: 'Các khoản nợ có kỳ hạn trên 1 năm.',
+        tip: 'Mẹo nhớ: Nợ dài hạn = Trái phiếu + Vay ngân hàng.'
+      },
+      {
+        id: 20, chapter: 'ch4', chapterLabel: 'Chương 4', group: '2. Phương cách tạo vốn',
+        title: 'Chỉ số Trái phiếu',
+        hint: 'Tỷ trọng mệnh giá Trái phiếu trong Tổng vốn dài hạn',
+        formula: R`$$\text{Chỉ số Trái phiếu} = \frac{\text{Tổng mệnh giá Trái phiếu}}{\text{Tổng vốn dài hạn}}$$`,
+        vars: 'Đo mức độ huy động vốn qua kênh phát hành trái phiếu.',
+        tip: 'Mẹo nhớ: Nhóm Phương cách tạo vốn đều có mẫu số là Tổng vốn dài hạn.'
+      },
+      {
+        id: 21, chapter: 'ch4', chapterLabel: 'Chương 4', group: '2. Phương cách tạo vốn',
+        title: 'Chỉ số Cổ phiếu ưu đãi',
+        hint: 'Tỷ trọng mệnh giá Cổ phiếu ưu đãi trong Tổng vốn dài hạn',
+        formula: R`$$\text{Chỉ số CPƯĐ} = \frac{\text{Tổng mệnh giá Cổ phiếu ưu đãi}}{\text{Tổng vốn dài hạn}}$$`,
+        vars: 'Đo tỷ trọng vốn cổ phần ưu đãi trong cơ cấu vốn dài hạn.',
+        tip: 'Mẹo nhớ: Mệnh giá CPƯĐ / Tổng vốn dài hạn.'
+      },
+      {
+        id: 22, chapter: 'ch4', chapterLabel: 'Chương 4', group: '2. Phương cách tạo vốn',
+        title: 'Chỉ số Cổ phiếu thường',
+        hint: 'Tỷ trọng Tổng vốn cổ đông trên Tổng vốn dài hạn',
+        formula: R`$$\text{Chỉ số CPT} = \frac{\text{Tổng vốn cổ đông}}{\text{Tổng vốn dài hạn}} = \frac{\text{CPT} + \text{VCP} + \text{TNGL} + \text{Thặng dư}}{\text{Tổng vốn dài hạn}}$$`,
+        vars: 'Đo mức độ tự chủ tài chính bằng vốn cổ đông thường.',
+        tip: 'Mẹo nhớ: Tổng vốn cổ đông / Tổng vốn dài hạn.'
+      },
+      {
+        id: 23, chapter: 'ch4', chapterLabel: 'Chương 4', group: '2. Phương cách tạo vốn',
+        title: 'Chỉ số Nợ trên Vốn cổ phần',
+        hint: 'Tỷ lệ giữa (Tổng Trái phiếu + Tổng CPƯĐ) trên Vốn cổ phần thường',
+        formula: R`$$\text{Nợ / VCP} = \frac{\text{Tổng Trái phiếu} + \text{Tổng CPƯĐ}}{\text{Cổ phần thường} + \text{TNGL} + \text{Thặng dư}}$$`,
+        vars: 'CPƯĐ có cổ tức cố định giống nghĩa vụ nợ nên được xếp ở tử số.',
+        tip: 'Mẹo nhớ: Tử số có cả Trái phiếu + CPƯĐ; Mẫu số là CPT + TNGL + Thặng dư.'
+      },
+
+      // Nhóm 3: Bảo chứng (6)
+      {
+        id: 24, chapter: 'ch4', chapterLabel: 'Chương 4', group: '3. Chỉ số Bảo chứng',
+        title: 'Thu nhập hoạt động (EBITDA)',
+        hint: 'Doanh thu trừ chi phí hoạt động (chưa trừ khấu hao, lãi, thuế)',
+        formula: R`$$\text{EBITDA} = \text{Doanh thu} - \text{Chi phí}$$`,
+        vars: 'Earnings Before Interest, Taxes, Depreciation & Amortization.',
+        tip: 'Mẹo nhớ: Bậc 1 trong thang lợi nhuận: Doanh thu − Chi phí.'
+      },
+      {
+        id: 25, chapter: 'ch4', chapterLabel: 'Chương 4', group: '3. Chỉ số Bảo chứng',
+        title: 'Thu nhập trước thuế và lãi vay (EBIT)',
+        hint: 'Lấy EBITDA trừ đi chi phí Khấu hao',
+        formula: R`$$\text{EBIT} = \text{Thu nhập hoạt động (EBITDA)} - \text{Khấu hao}$$`,
+        vars: 'Earnings Before Interest & Taxes — nguồn tiền để trả lãi vay.',
+        tip: 'Mẹo nhớ: Bậc 2: EBITDA trừ Khấu hao (D&A) ra EBIT.'
+      },
+      {
+        id: 26, chapter: 'ch4', chapterLabel: 'Chương 4', group: '3. Chỉ số Bảo chứng',
+        title: 'Thu nhập ròng (Net Income)',
+        hint: 'EBIT trừ đi chi phí Lãi vay (lãi trả trên trái phiếu)',
+        formula: R`$$\text{Thu nhập ròng} = \text{EBIT} - \text{Lãi vay (Lãi trả trên trái phiếu)}$$`,
+        vars: 'Trong khuôn khổ bảng công thức rút gọn chưa tách riêng thuế TNDN.',
+        tip: 'Mẹo nhớ: Bậc 3: EBIT − Lãi vay = Thu nhập ròng.'
+      },
+      {
+        id: 27, chapter: 'ch4', chapterLabel: 'Chương 4', group: '3. Chỉ số Bảo chứng',
+        title: 'Thu nhập cho cổ đông thường',
+        hint: 'Thu nhập ròng trừ đi Cổ tức của Cổ phiếu ưu đãi',
+        formula: R`$$\text{Thu nhập cho CĐ} = \text{Thu nhập ròng} - \text{Cổ tức Cổ phiếu ưu đãi}$$`,
+        vars: 'Cổ đông ưu đãi được chia cổ tức trước, phần còn lại thuộc cổ đông thường.',
+        tip: 'Mẹo nhớ: Bậc 4 (Tử số của EPS): Thu nhập ròng − Cổ tức ưu đãi.'
+      },
+      {
+        id: 28, chapter: 'ch4', chapterLabel: 'Chương 4', group: '3. Chỉ số Bảo chứng',
+        title: 'Bảo chứng tiền lãi Trái phiếu',
+        hint: 'Hệ số khả năng thanh toán lãi vay từ EBIT',
+        formula: R`$$\text{Bảo chứng lãi TP} = \frac{\text{EBIT}}{\text{Tiền lãi trái phiếu hàng năm}}$$`,
+        vars: 'Cho biết EBIT gấp bao nhiêu lần nghĩa vụ trả lãi trái phiếu.',
+        tip: 'Mẹo nhớ: Lãi vay trả trước thuế nên lấy EBIT chia Lãi trái phiếu.'
+      },
+      {
+        id: 29, chapter: 'ch4', chapterLabel: 'Chương 4', group: '3. Chỉ số Bảo chứng',
+        title: 'Bảo chứng tiền lãi Cổ phiếu ưu đãi',
+        hint: 'Khả năng chi trả cổ tức ưu đãi từ Thu nhập ròng',
+        formula: R`$$\text{Bảo chứng lãi CPƯĐ} = \frac{\text{Thu nhập ròng}}{\text{Cổ tức Cổ phiếu ưu đãi}}$$`,
+        vars: 'Cổ tức ưu đãi trả sau lãi vay và thuế nên lấy Thu nhập ròng ở tử số.',
+        tip: 'Mẹo nhớ: Trái phiếu dùng EBIT; Cổ phiếu ưu đãi dùng Thu nhập ròng.'
+      },
+
+      // Nhóm 4: Khả năng sinh lời (8)
+      {
+        id: 30, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Chỉ số Lợi nhuận hoạt động',
+        hint: 'Tỷ lệ EBITDA trên Doanh số bán thực',
+        formula: R`$$\text{LN hoạt động} = \frac{\text{Doanh thu} - \text{Chi phí}}{\text{Doanh số bán thực}} = \frac{\text{EBITDA}}{\text{Doanh số bán thực}}$$`,
+        vars: 'Đo biên lợi nhuận từ hoạt động kinh doanh cốt lõi.',
+        tip: 'Mẹo nhớ: EBITDA / Doanh số bán thực.'
+      },
+      {
+        id: 31, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Chỉ số Lợi nhuận ròng',
+        hint: 'Tỷ lệ Thu nhập ròng trên Doanh số bán thực',
+        formula: R`$$\text{LN ròng} = \frac{\text{Thu nhập ròng}}{\text{Doanh số bán thực}} = \frac{\text{EBIT} - \text{Lãi vay}}{\text{Doanh số bán thực}}$$`,
+        vars: 'Đo phần trăm doanh thu chuyển hóa thành lợi nhuận ròng.',
+        tip: 'Mẹo nhớ: Thu nhập ròng / Doanh số bán thực.'
+      },
+      {
+        id: 32, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Thu nhập mỗi cổ phần (EPS)',
+        hint: 'Thu nhập cho cổ đông thường chia số cổ phiếu đang lưu hành',
+        formula: R`$$\text{EPS} = \frac{\text{Thu nhập ròng} - \text{Cổ tức ưu đãi}}{\text{Số cổ phiếu đang lưu hành}}$$`,
+        vars: 'Earnings Per Share — chỉ số lõi trong định giá P/E.',
+        tip: 'Mẹo nhớ: Luôn nhớ trừ Cổ tức ưu đãi trước khi chia Số CP lưu hành!'
+      },
+      {
+        id: 33, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Cổ tức trên mỗi cổ phần (DPS)',
+        hint: 'Tổng cổ tức chi trả chia cho số cổ phiếu đang lưu hành',
+        formula: R`$$\text{DPS} = \frac{\text{Thu nhập ròng} - \text{Cổ tức ưu đãi} - \text{TNGL}}{\text{Số cổ phiếu đang lưu hành}} = \frac{\text{Cổ tức}}{\text{Số CP lưu hành}}$$`,
+        vars: 'Dividend Per Share; TNGL là phần lợi nhuận giữ lại không chia.',
+        tip: 'Mẹo nhớ: Lấy thu nhập cổ đông thường trừ đi phần giữ lại (TNGL) sẽ ra Cổ tức.'
+      },
+      {
+        id: 34, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Giá trị sổ sách trên mỗi cổ phần (BVPS)',
+        hint: 'Vốn chủ sở hữu chia cho số lượng cổ phiếu đang lưu hành',
+        formula: R`$$\text{BVPS} = \frac{\text{Vốn chủ sở hữu}}{\text{Số lượng cổ phiếu đang lưu hành}}$$`,
+        vars: 'Book Value Per Share — mẫu số của hệ số P/B.',
+        tip: 'Mẹo nhớ: BVPS = VCSH / Số CP lưu hành.'
+      },
+      {
+        id: 35, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Chỉ số Thanh toán cổ tức (Payout Ratio)',
+        hint: 'Tỷ lệ cổ tức chi trả trên mỗi cổ phần so với EPS',
+        formula: R`$$\text{Chỉ số Thanh toán cổ tức} = \frac{\text{DPS}}{\text{EPS}}$$`,
+        vars: 'Cho biết doanh nghiệp trích bao nhiêu % lợi nhuận để trả cổ tức.',
+        tip: 'Mẹo nhớ: Trả cổ tức (D) trên tổng kiếm được (E) → DPS / EPS.',
+        isTrap: true,
+        trapNote: 'BẪY THI (LỖI IN PDF): Tài liệu PDF trang 2 ghi nhầm ngược thành EPS / DPS. Công thức chuẩn tài chính bắt buộc là DPS / EPS!'
+      },
+      {
+        id: 36, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Tỷ lệ Thu nhập giữ lại (Retention Ratio - b)',
+        hint: 'Phần lợi nhuận còn lại sau khi chi trả cổ tức',
+        formula: R`$$\text{Tỷ lệ TNGL} = 1 - \text{Chỉ số Thanh toán cổ tức}$$`,
+        vars: 'Ký hiệu b = 1 − d. Dùng để tính tốc độ tăng trưởng bền vững g = b × ROE.',
+        tip: 'Mẹo nhớ: Tổng tỷ lệ chi trả + tỷ lệ giữ lại luôn bằng 100% (1).'
+      },
+      {
+        id: 37, chapter: 'ch4', chapterLabel: 'Chương 4', group: '4. Khả năng sinh lời',
+        title: 'Cổ tức (tính theo EPS)',
+        hint: 'Nhân EPS với Tỷ lệ chi trả cổ tức',
+        formula: R`$$\text{Cổ tức (DPS)} = \text{EPS} \times \text{Tỷ lệ chi trả cổ tức}$$`,
+        vars: 'Biến đổi trực tiếp từ công thức Tỷ lệ thanh toán cổ tức = DPS / EPS.',
+        tip: 'Mẹo nhớ: Kiếm được EPS, chia tỷ lệ d% → Nhận cổ tức = EPS × d%.'
+      },
+
+      // Nhóm 5: Triển vọng phát triển & DuPont (8)
+      {
+        id: 38, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'Chỉ số Giá trên thu nhập (P/E)',
+        hint: 'Thị giá cổ phiếu chia cho Thu nhập mỗi cổ phần (EPS)',
+        formula: R`$$P/E = \frac{\text{Thị giá}}{\text{EPS}}$$`,
+        vars: 'Cho biết nhà đầu tư sẵn sàng trả bao nhiêu đồng cho 1 đồng lợi nhuận.',
+        tip: 'Mẹo nhớ: Price / Earnings = Thị giá / EPS.'
+      },
+      {
+        id: 39, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'Chỉ số Giá trên giá trị sổ sách (P/B)',
+        hint: 'Thị giá cổ phiếu chia cho Giá trị sổ sách (BVPS)',
+        formula: R`$$P/B = \frac{\text{Thị giá}}{\text{BVPS}}$$`,
+        vars: 'So sánh giá thị trường với giá trị tài sản ròng sổ sách mỗi cổ phần.',
+        tip: 'Mẹo nhớ: Price / Book = Thị giá / BVPS.'
+      },
+      {
+        id: 40, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'Hệ số đòn bẩy tài chính (Equity Multiplier)',
+        hint: 'Tỷ lệ Tổng Tài sản trên Tổng Vốn chủ sở hữu',
+        formula: R`$$\text{Đòn bẩy TC} = \frac{\text{Tổng Tài sản}}{\text{Tổng VCSH}} = \frac{1}{1 - \frac{\text{Tổng nợ}}{\text{Tổng tài sản}}}$$`,
+        vars: 'Cũng bằng 1 + (Tổng nợ / Tổng VCSH). Đo mức độ khuếch đại bằng nợ.',
+        tip: 'Mẹo nhớ: TS/VCSH = 1 / (1 − D/A) = 1 + D/E.'
+      },
+      {
+        id: 41, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'TSSL trên Tổng tài sản (ROA)',
+        hint: 'Lợi nhuận sau thuế chia Tổng tài sản bình quân (×100%)',
+        formula: R`$$ROA = \frac{\text{Lợi nhuận sau thuế}}{\text{Tổng tài sản bình quân}} \times 100\%$$`,
+        vars: 'Return on Assets — hiệu quả sử dụng toàn bộ tài sản sinh lời.',
+        tip: 'Mẹo nhớ: ROA = ROS × Vòng quay Tổng tài sản.'
+      },
+      {
+        id: 42, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'TSSL trên Doanh thu thuần (ROS)',
+        hint: 'Lợi nhuận sau thuế chia Doanh thu thuần (×100%)',
+        formula: R`$$ROS = \frac{\text{Lợi nhuận sau thuế}}{\text{Doanh thu thuần}} \times 100\%$$`,
+        vars: 'Return on Sales (Biên lợi nhuận ròng).',
+        tip: 'Mẹo nhớ: S là Sales → Chia cho Doanh thu thuần.'
+      },
+      {
+        id: 43, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'TSSL trên Vốn chủ sở hữu (ROE - Cơ bản)',
+        hint: 'LNST trên VCSH bình quân, hoặc ROA nhân Đòn bẩy tài chính',
+        formula: R`$$ROE = \frac{\text{LNST}}{\text{VCSH bình quân}} = \frac{\text{LNST}}{\text{Tổng tài sản}} \times \text{Đòn bẩy TC}$$`,
+        vars: 'Return on Equity — thước đo sinh lời quan trọng nhất với cổ đông.',
+        tip: 'Mẹo nhớ: ROE = ROA × Đòn bẩy tài chính.'
+      },
+      {
+        id: 44, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'TSSL trên VCSH (ROE - DuPont 3 nhân tố)',
+        hint: 'Tích của ROS, Vòng quay Tài sản và Hệ số đòn bẩy (1 + Nợ/VCSH)',
+        formula: R`$$ROE = ROS \times \text{Vòng quay Tài sản} \times \left(1 + \frac{\text{Tổng nợ}}{\text{Tổng VCSH}}\right)$$`,
+        vars: '3 động lực tăng ROE: Biên lợi nhuận (ROS) × Hiệu suất tài sản × Đòn bẩy nợ.',
+        tip: 'Mẹo nhớ: DuPont = Biên lãi × Vòng quay × Đòn bẩy.'
+      },
+      {
+        id: 45, chapter: 'ch4', chapterLabel: 'Chương 4', group: '5. Triển vọng & DuPont',
+        title: 'Tốc độ tăng trưởng bền vững (g)',
+        hint: 'Tỷ lệ Thu nhập giữ lại nhân với ROE',
+        formula: R`$$g = \text{Tỷ lệ Thu nhập giữ lại} \times ROE$$`,
+        vars: 'Dùng trực tiếp làm tham số g trong mô hình chiết khấu cổ tức DDM.',
+        tip: 'Mẹo nhớ: g = b × ROE = (1 − d) × ROE.'
+      },
+
+      // -------------------- CHƯƠNG 5: ĐỊNH GIÁ CỔ PHIẾU (7) --------------------
+      {
+        id: 46, chapter: 'ch5', chapterLabel: 'Chương 5', group: 'Giá trị cổ phiếu',
+        title: 'Mệnh giá Cổ phiếu',
+        hint: 'Tổng số vốn điều lệ chia số lượng cổ phiếu đang lưu hành',
+        formula: R`$$\text{Mệnh giá CP} = \frac{\text{Tổng số vốn huy động (Vốn điều lệ)}}{\text{Số lượng cổ phiếu đang lưu hành}}$$`,
+        vars: 'Ở Việt Nam mệnh giá cổ phiếu quy định chuẩn là 10.000 VNĐ.',
+        tip: 'Mẹo nhớ: Mệnh giá chỉ tính trên Vốn điều lệ ban đầu.'
+      },
+      {
+        id: 47, chapter: 'ch5', chapterLabel: 'Chương 5', group: 'Giá trị cổ phiếu',
+        title: 'Thư giá Cổ phiếu (Giá trị sổ sách)',
+        hint: 'Tổng Vốn cổ phần (Mệnh giá + Thặng dư + TNGL) chia số CP lưu hành',
+        formula: R`$$\text{Thư giá CP} = \frac{\text{Tổng Vốn cổ phần}}{\text{Số lượng CP lưu hành}} = \frac{\text{Mệnh giá CPT} + \text{Vốn thặng dư} + \text{TNGL}}{\text{Số lượng CP lưu hành}}$$`,
+        vars: 'Phản ánh giá trị kế toán thực tế của mỗi cổ phần tại thời điểm báo cáo.',
+        tip: 'Mẹo nhớ: Thư giá = Mệnh giá + Thặng dư + Lợi nhuận giữ lại (chia số CP).'
+      },
+      {
+        id: 48, chapter: 'ch5', chapterLabel: 'Chương 5', group: 'Mô hình DDM',
+        title: 'DDM - TH1: Cổ tức không tăng trưởng (g = 0)',
+        hint: 'Cổ tức cố định vĩnh viễn chia cho TSSL đòi hỏi',
+        formula: R`$$P_0 = \frac{\text{Cổ tức}}{\text{TSSL đòi hỏi}} = \frac{D_{\text{cố định}}}{r\%}$$`,
+        vars: 'Áp dụng cho cổ phiếu ưu đãi hoặc cổ phiếu trả cổ tức không đổi mãi mãi.',
+        tip: 'Mẹo nhớ: Dòng tiền đều vĩnh viễn → P0 = D / r.'
+      },
+      {
+        id: 49, chapter: 'ch5', chapterLabel: 'Chương 5', group: 'Mô hình DDM',
+        title: 'DDM - TH2: Cổ tức tăng trưởng đều (Gordon)',
+        hint: 'Cổ tức năm tới D1 chia cho hiệu (r% - g%)',
+        formula: R`$$P_0 = \frac{D_1}{r\% - g\%} = \frac{D_0(1+g)}{r\% - g\%}$$`,
+        vars: 'Điều kiện bắt buộc: r > g. Cẩn thận phân biệt D0 (đã chia) và D1 (năm tới)!',
+        tip: 'Mẹo nhớ: Gordon luôn dùng D1 ở tử số! Nếu đề cho D0 phải nhân thêm (1+g).'
+      },
+      {
+        id: 50, chapter: 'ch5', chapterLabel: 'Chương 5', group: 'Mô hình DDM',
+        title: 'DDM - TH3: Cổ tức tăng trưởng không đều',
+        hint: 'Chiết khấu từng cổ tức D1..Dn và giá trị cuối kỳ Pn theo (1+r)^t',
+        formula: R`$$P_0 = \frac{D_1}{(1+r)^1} + \frac{D_2}{(1+r)^2} + \dots + \frac{D_n}{(1+r)^n} + \frac{P_n}{(1+r)^n}$$`,
+        vars: 'r: TSSL đòi hỏi của nhà đầu tư; Pn: giá cổ phiếu tại cuối năm n.',
+        tip: 'Mẹo nhớ: Giai đoạn đầu chiết khấu từng năm bằng (1+r)^t, rồi cộng PV của Pn.',
+        isTrap: true,
+        trapNote: 'BẪY THI (LỖI IN PDF): Tài liệu PDF trang 1 gõ nhầm mẫu số thành (r% − g%)^t. Công thức chiết khấu chuẩn bắt buộc là (1 + r)^t!'
+      },
+      {
+        id: 51, chapter: 'ch5', chapterLabel: 'Chương 5', group: 'Mô hình DDM',
+        title: 'Giá trị cổ phiếu tại năm n (Pn)',
+        hint: 'Giá trị cuối kỳ khi từ năm n trở đi cổ tức tăng trưởng đều g%',
+        formula: R`$$P_n = \frac{D_{n+1}}{r\% - g\%}$$`,
+        vars: 'D_{n+1} = D_n × (1 + g). Sau khi tính Pn, nhớ chiết khấu về hiện tại bằng (1+r)^n.',
+        tip: 'Mẹo nhớ: Muốn tìm Pn ở năm n phải dùng cổ tức năm n+1 chia (r − g).'
+      },
+      {
+        id: 52, chapter: 'ch5', chapterLabel: 'Chương 5', group: 'Định giá tương đối',
+        title: 'Định giá cổ phiếu theo P/E và P/B',
+        hint: 'Ước tính thị giá hợp lý bằng hệ số ngành nhân EPS hoặc BVPS',
+        formula: R`$$\text{Thị giá} = P/E \times \text{EPS} = P/B \times \text{BVPS}$$`,
+        vars: 'P/E = Thị giá / EPS; P/B = Thị giá / BVPS.',
+        tip: 'Mẹo nhớ: Bội số ngành × Chỉ tiêu cơ bản công ty = Giá trị hợp lý.',
+        isTrap: true,
+        trapNote: 'BẪY THI (LỖI IN PDF): Tài liệu PDF trang 1 ghi nhầm mẫu số của P/B thành DPS. Mẫu số đúng của P/B là Giá trị sổ sách (BVPS)!'
+      },
+
+      // -------------------- CHƯƠNG 6: ĐỊNH GIÁ TRÁI PHIẾU (11) --------------------
+      {
+        id: 53, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Định giá Trái phiếu',
+        title: 'Hiện giá TP có kỳ hạn hưởng lãi (TP đường thẳng)',
+        hint: 'Hiện giá dòng tiền lãi coupon C đều hàng năm + Hiện giá mệnh giá F',
+        formula: R`$$PV = C\left[\frac{1 - (1+r)^{-n}}{r}\right] + F(1+r)^{-n}$$`,
+        vars: 'C: tiền lãi coupon hàng năm; F: mệnh giá; r: lãi suất thị trường; n: số năm.',
+        tip: 'Mẹo nhớ: Giá TP = PV(chuỗi lãi C) + PV(mệnh giá F).'
+      },
+      {
+        id: 54, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Định giá Trái phiếu',
+        title: 'Hiện giá TP không hưởng lãi (TP chiết khấu)',
+        hint: 'Zero-Coupon Bond: C = 0, chỉ chiết khấu mệnh giá F về hiện tại',
+        formula: R`$$PV = F(1+r)^{-n}$$`,
+        vars: 'Trái phiếu bán với giá thấp hơn mệnh giá và hoàn trả F khi đáo hạn.',
+        tip: 'Mẹo nhớ: Không có lãi định kỳ → Bỏ vế C, chỉ còn F(1+r)^(-n).'
+      },
+      {
+        id: 55, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Định giá Trái phiếu',
+        title: 'Hiện giá TP trả lãi bán niên (6 tháng/lần)',
+        hint: 'Chia đôi C và r, nhân đôi số kỳ n thành 2n',
+        formula: R`$$PV = \frac{C}{2}\left[\frac{1 - (1 + r/2)^{-2n}}{r/2}\right] + F\left(1 + \frac{r}{2}\right)^{-2n}$$`,
+        vars: 'Mỗi năm trả lãi 2 lần nên kỳ tính lãi là 2n, lãi suất mỗi kỳ là r/2.',
+        tip: 'Mẹo nhớ: Quy tắc bán niên: C chia 2, r chia 2, n nhân 2!'
+      },
+      {
+        id: 56, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Định giá Trái phiếu',
+        title: 'Hiện giá TP thả nổi (Floating-Rate Bond)',
+        hint: 'Lãi suất coupon điều chỉnh theo thị trường vào kỳ trả lãi',
+        formula: R`$$PV = C\left[\frac{1 - (1+r)^{-n}}{r}\right] + F(1+r)^{-n} = F$$`,
+        vars: 'Tại ngày điều chỉnh/trả lãi, lãi suất coupon = lãi suất thị trường nên PV = F.',
+        tip: 'Mẹo nhớ: TP thả nổi luôn quay về đúng Mệnh giá F vào mỗi kỳ trả lãi.'
+      },
+      {
+        id: 57, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'TSSL Trái phiếu',
+        title: 'TSSL tức thời (Current Yield - Y)',
+        hint: 'Tiền lãi coupon hàng năm chia cho Giá vốn mua trái phiếu',
+        formula: R`$$Y = \frac{\text{Tiền lãi (Coupon)}}{\text{Giá vốn TP}} = \frac{\text{Mệnh giá} \times \text{Lãi danh nghĩa}}{\text{Giá vốn TP}}$$`,
+        vars: 'Chỉ phản ánh thu nhập từ lãi coupon, chưa tính lãi/lỗ vốn khi đáo hạn.',
+        tip: 'Mẹo nhớ: Current Yield = C / P_0.'
+      },
+      {
+        id: 58, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'TSSL Trái phiếu',
+        title: 'TSSL đến khi đáo hạn (YTM)',
+        hint: 'Lãi suất chiết khấu làm hiện giá dòng tiền bằng giá mua PV',
+        formula: R`$$PV = C\left[\frac{1 - (1+YTM)^{-n}}{YTM}\right] + F(1+YTM)^{-n} \rightarrow \text{Tìm } YTM$$`,
+        vars: 'Yield to Maturity — giả định giữ đến đáo hạn và tái đầu tư coupon theo YTM.',
+        tip: 'Mẹo nhớ: Nếu P < F thì YTM > Lãi danh nghĩa; nếu P > F thì YTM < Lãi danh nghĩa.'
+      },
+      {
+        id: 59, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'TSSL Trái phiếu',
+        title: 'TSSL đến khi chuộc lại / thu hồi (YTC)',
+        hint: 'Thay mệnh giá F bằng Giá thu hồi Pc và kỳ hạn n bằng kỳ chuộc lại',
+        formula: R`$$PV = C\left[\frac{1 - (1+YTC)^{-n}}{YTC}\right] + P_C(1+YTC)^{-n} \rightarrow \text{Tìm } YTC$$`,
+        vars: 'Yield to Call; P_C: giá thu hồi (Call Price); n: số kỳ cho đến ngày thu hồi.',
+        tip: 'Mẹo nhớ: YTC giống hệt YTM, chỉ đổi F thành Pc và kỳ hạn thành thời gian đến ngày gọi mua.'
+      },
+      {
+        id: 60, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Duration & Độ lồi',
+        title: 'Thời gian đáo hạn bình quân (Macaulay Duration)',
+        hint: 'Bình quân gia quyền thời gian nhận dòng tiền theo hiện giá',
+        formula: R`$$D_m = \frac{\sum_{t=1}^{n}\frac{t \cdot CF_t}{(1+y)^t}}{PV} = \frac{\left(\sum_{t=1}^{n}\frac{t \cdot C}{(1+y)^t}\right) + \frac{n \cdot F}{(1+y)^n}}{PV}$$`,
+        vars: 'Đơn vị tính bằng NĂM. Với Zero-Coupon Bond, Dm luôn đúng bằng kỳ hạn n.',
+        tip: 'Mẹo nhớ: Nhân thêm trọng số thời gian t vào từng dòng tiền hiện giá rồi chia PV.'
+      },
+      {
+        id: 61, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Duration & Độ lồi',
+        title: 'Thời gian đáo hạn bình quân điều chỉnh (Modified Duration)',
+        hint: 'Lấy Macaulay Duration chia cho (1 + y)',
+        formula: R`$$MD = \frac{D_m}{1 + y}$$`,
+        vars: 'y: lãi suất đáo hạn mỗi kỳ. MD đo % biến động giá khi lãi suất thay đổi 1%.',
+        tip: 'Mẹo nhớ: MD = Dm / (1 + y). MD càng lớn, rủi ro lãi suất càng cao.'
+      },
+      {
+        id: 62, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Duration & Độ lồi',
+        title: 'Độ lồi trái phiếu (Convexity)',
+        hint: 'Đạo hàm bậc hai của giá theo lợi suất chia cho hiện giá PV',
+        formula: R`$$\text{Convexity} = \frac{d^2P}{dy^2} \cdot \frac{1}{PV} = \frac{\left(\sum_{t=1}^{n}\frac{t(t+1)C}{(1+y)^{t+2}}\right) + \frac{n(n+1)F}{(1+y)^{n+2}}}{PV}$$`,
+        vars: 'Điều chỉnh sai số tuyến tính của Duration khi lãi suất biến động mạnh.',
+        tip: 'Mẹo nhớ: Tử số có hệ số t(t+1) và mẫu số lũy thừa (t+2), tất cả chia PV.'
+      },
+      {
+        id: 63, chapter: 'ch6', chapterLabel: 'Chương 6', group: 'Duration & Độ lồi',
+        title: 'Ước tính phần trăm thay đổi giá trái phiếu',
+        hint: 'Kết hợp cả tác động tuyến tính (-MD·dy) và tác động Độ lồi',
+        formula: R`$$\frac{dP}{P} = -MD \cdot dy + \frac{1}{2}(\text{Độ lồi})(dy)^2$$`,
+        vars: 'dy: mức thay đổi lãi suất (dạng thập phân, VD: tăng 1% → dy = +0.01).',
+        tip: 'Mẹo nhớ: Dấu TRỪ trước MD (giá ngược chiều lãi suất) và dấu CỘNG trước ½ Convexity·dy².'
+      }
+    ];
+
+    /* =========================================================================
+       2. CURATED BANK OF 50 PRACTICAL CALCULATION & CONCEPT QUESTIONS (10/EXAM)
+       Combined with 20 uniquely mapped Formula/Theory questions per exam = 150 total!
+       ========================================================================= */
+    const PRACTICAL_QUESTIONS = {
+      1: [
+        { tag: 'Bài tập Ch.2', q: 'Mua cổ phiếu giá 40.000đ, cuối năm nhận cổ tức 4.000đ và bán giá 44.000đ. Tỷ suất sinh lời (%) là bao nhiêu?', opts: ['10%', '15%', '20%', '25%'], ans: 2, exp: R`$r = \frac{4.000 + (44.000 - 40.000)}{40.000} = \frac{8.000}{40.000} = 20\%$.` },
+        { tag: 'Bài tập Ch.2', q: 'Một cổ phiếu có TSSL 2 năm liên tiếp là $r_1 = 20\%$ và $r_2 = -10\%$. Mức sinh lời bình quân số học là:', opts: ['5%', '3,92%', '10%', '8%'], ans: 0, exp: R`$r_A = \frac{20\% + (-10\%)}{2} = 5\%$.` },
+        { tag: 'Bài tập Ch.2', q: 'Cổ phiếu có 2 kịch bản: Tốt (xác suất 60%, TSSL 20%) và Xấu (xác suất 40%, TSSL -5%). Mức sinh lời kỳ vọng $E(R)$ bằng:', opts: ['7,5%', '10%', '12%', '14%'], ans: 1, exp: R`$E(R) = 0,6 \times 20\% + 0,4 \times (-5\%) = 12\% - 2\% = 10\%$.` },
+        { tag: 'Bài tập Ch.4', q: 'Doanh nghiệp có Tổng TSLĐ = 500 tỷ, Hàng tồn kho = 150 tỷ, Nợ ngắn hạn = 250 tỷ. Chỉ số Tài sản nhạy cảm (Quick Ratio) là:', opts: ['2,0 lần', '1,4 lần', '0,6 lần', '1,8 lần'], ans: 1, exp: R`$\text{Quick Ratio} = \frac{500 - 150}{250} = \frac{350}{250} = 1,4\text{ lần}$.` },
+        { tag: 'Bài tập Ch.4', q: 'Thu nhập ròng = 120 tỷ, Cổ tức ưu đãi = 20 tỷ, Số cổ phiếu thường đang lưu hành = 10 triệu CP. EPS bằng:', opts: ['12.000đ', '10.000đ', '14.000đ', '8.000đ'], ans: 1, exp: R`$\text{EPS} = \frac{120\text{ tỷ} - 20\text{ tỷ}}{10\text{ triệu}} = 10.000\text{đ/CP}$.` },
+        { tag: 'Bài tập Ch.4', q: 'Công ty có $ROS = 10\%$, Vòng quay tài sản = 1,5 vòng, Tổng nợ/Tổng VCSH = 1. Theo DuPont, ROE bằng:', opts: ['15%', '20%', '30%', '25%'], ans: 2, exp: R`$ROE = 10\% \times 1,5 \times (1 + 1) = 30\%$.` },
+        { tag: 'Bài tập Ch.5', q: 'Cổ phiếu trả cổ tức cố định $D = 3.000\text{đ/năm}$ mãi mãi, TSSL đòi hỏi $r = 12\%$. Giá trị hợp lý $P_0$ là:', opts: ['20.000đ', '25.000đ', '30.000đ', '36.000đ'], ans: 1, exp: R`$P_0 = \frac{D}{r} = \frac{3.000}{0,12} = 25.000\text{đ}$.` },
+        { tag: 'Bài tập Ch.5', q: 'Cổ phiếu dự kiến chia cổ tức năm tới $D_1 = 2.400\text{đ}$, tăng trưởng đều $g = 6\%$/năm, $r = 14\%$. Giá cổ phiếu $P_0$ theo Gordon là:', opts: ['24.000đ', '30.000đ', '36.000đ', '40.000đ'], ans: 1, exp: R`$P_0 = \frac{D_1}{r - g} = \frac{2.400}{0,14 - 0,06} = 30.000\text{đ}$.` },
+        { tag: 'Bài tập Ch.6', q: 'Trái phiếu chiết khấu (không hưởng lãi) mệnh giá 1.000.000đ, kỳ hạn 3 năm, lãi suất thị trường 10%/năm. Hiện giá PV xấp xỉ:', opts: ['751.315đ', '826.446đ', '909.091đ', '683.013đ'], ans: 0, exp: R`$PV = 1.000.000 \times (1,1)^{-3} \approx 751.315\text{đ}$.` },
+        { tag: 'Bài tập Ch.6', q: 'Trái phiếu có Macaulay Duration $D_m = 4,4$ năm và lợi suất đáo hạn $y = 10\%$. Modified Duration (MD) bằng:', opts: ['4,84', '4,00', '3,96', '4,20'], ans: 1, exp: R`$MD = \frac{D_m}{1+y} = \frac{4,4}{1,1} = 4,00$.` }
+      ],
+      2: [
+        { tag: 'Bài tập Ch.2', q: 'TSSL 2 năm lần lượt là $r_1 = 25\%$ và $r_2 = -20\%$. Mức sinh lời bình quân hình học (lũy kế) bằng:', opts: ['2,5%', '0%', '5%', '-2,5%'], ans: 1, exp: R`$r_G = \sqrt{(1,25)(0,80)} - 1 = \sqrt{1} - 1 = 0\%$.` },
+        { tag: 'Lý thuyết Ch.2', q: 'Khi tính Phương sai rủi ro từ chuỗi dữ liệu lịch sử quá khứ gồm $n$ quan sát, mẫu số chia cho giá trị nào?', opts: ['n', 'n − 1', 'n + 1', '√n'], ans: 1, exp: R`Dữ liệu lịch sử quá khứ dùng mẫu số $(n-1)$: $s^2 = \frac{1}{n-1}\sum(\bar{R}-R_i)^2$.` },
+        { tag: 'Bài tập Ch.4', q: 'Doanh nghiệp có Thu nhập ròng = 80 tỷ và Khấu hao hàng năm = 25 tỷ. Lưu lượng tiền mặt (Cash Flow) bằng:', opts: ['55 tỷ', '80 tỷ', '105 tỷ', '125 tỷ'], ans: 2, exp: R`$\text{Lưu lượng tiền mặt} = 80 + 25 = 105\text{ tỷ}$.` },
+        { tag: 'Bài tập Ch.4', q: 'EBIT = 60 tỷ, Tiền lãi trái phiếu hàng năm = 12 tỷ. Chỉ số Bảo chứng tiền lãi Trái phiếu là:', opts: ['4 lần', '5 lần', '6 lần', '0,2 lần'], ans: 1, exp: R`$\text{Bảo chứng lãi TP} = \frac{60}{12} = 5\text{ lần}$.` },
+        { tag: 'Bẫy thi Ch.4', q: 'Công thức chuẩn tài chính của Chỉ số Thanh toán cổ tức (Payout Ratio) là gì (đã đính chính lỗi in PDF)?', opts: ['EPS / DPS', 'DPS / EPS', 'BVPS / EPS', 'EPS / BVPS'], ans: 1, exp: R`Chỉ số thanh toán cổ tức chuẩn là $\frac{DPS}{EPS}$ (PDF bị in ngược thành EPS/DPS).` },
+        { tag: 'Bài tập Ch.4', q: 'Doanh nghiệp có $ROE = 20\%$ và Tỷ lệ thanh toán cổ tức là 40%. Tốc độ tăng trưởng bền vững $g$ bằng:', opts: ['8%', '12%', '16%', '10%'], ans: 1, exp: R`Tỷ lệ TNGL $= 1 - 0,4 = 0,6$. Suy ra $g = 0,6 \times 20\% = 12\%$.` },
+        { tag: 'Bài tập Ch.5', q: 'Cổ phiếu vừa chia cổ tức năm nay $D_0 = 2.000\text{đ}$, tốc độ tăng trưởng đều $g = 5\%$, $r = 15\%$. Giá trị $P_0$ là:', opts: ['20.000đ', '21.000đ', '22.000đ', '19.000đ'], ans: 1, exp: R`$D_1 = 2.000(1,05) = 2.100\text{đ} \Rightarrow P_0 = \frac{2.100}{0,15 - 0,05} = 21.000\text{đ}$.` },
+        { tag: 'Bẫy thi Ch.5', q: 'Trong mô hình DDM tăng trưởng không đều, mẫu số đúng để chiết khấu dòng cổ tức năm $t$ về hiện tại là:', opts: ['(r% − g%)^t', '(1 + r)^t', '(1 + g)^t', '(1 + r − g)^t'], ans: 1, exp: R`Chiết khấu chuẩn theo $(1+r)^t$ (PDF bị gõ nhầm thành $(r\%-g\%)^t$).` },
+        { tag: 'Bài tập Ch.6', q: 'Trái phiếu mệnh giá 1.000.000đ, lãi danh nghĩa 9%/năm, đang được mua với giá vốn 900.000đ. TSSL tức thời (Current Yield) bằng:', opts: ['9%', '10%', '11%', '8,1%'], ans: 1, exp: R`$Y = \frac{1.000.000 \times 9\%}{900.000} = \frac{90.000}{900.000} = 10\%$.` },
+        { tag: 'Lý thuyết Ch.6', q: 'Vào đúng ngày điều chỉnh/trả lãi, hiện giá của Trái phiếu thả nổi (Floating-Rate Bond) bằng:', opts: ['0', 'Mệnh giá F', 'Nhỏ hơn F', 'Lớn hơn F'], ans: 1, exp: R`Tại kỳ trả lãi, lãi suất coupon cập nhật bằng lãi suất thị trường nên $PV = F$.` }
+      ],
+      3: [
+        { tag: 'Bài tập Ch.2', q: 'Đầu tư 100 triệu, thu nhập năm 1 là 115 triệu (kết thúc dự án). Tỷ suất sinh lời trọng số IRR là:', opts: ['10%', '12%', '15%', '18%'], ans: 2, exp: R`$100 = \frac{115}{1+r} \Rightarrow r = 15\%$.` },
+        { tag: 'Bài tập Ch.2', q: 'Nếu Phương sai lợi suất tương lai $\sigma^2 = 0,0225$ thì Độ lệch chuẩn $\sigma$ bằng:', opts: ['12%', '15%', '22,5%', '2,25%'], ans: 1, exp: R`$\sigma = \sqrt{0,0225} = 0,15 = 15\%$.` },
+        { tag: 'Bài tập Ch.4', q: 'Tổng Tài sản = 1.000 tỷ, Tổng Nợ = 600 tỷ. Hệ số đòn bẩy tài chính (Tổng TS / Tổng VCSH) bằng:', opts: ['1,67 lần', '2,5 lần', '1,5 lần', '0,4 lần'], ans: 1, exp: R`$\text{VCSH} = 400\text{ tỷ} \Rightarrow \text{Đòn bẩy} = \frac{1.000}{400} = 2,5\text{ lần}$ (hoặc $\frac{1}{1-0,6}=2,5$).` },
+        { tag: 'Bài tập Ch.4', q: 'Tiền mặt = 40 tỷ, Chứng khoán khả mại = 20 tỷ, Tổng nợ ngắn hạn = 120 tỷ. Chỉ số Tiền mặt (Cash Ratio) là:', opts: ['0,33', '0,50', '0,67', '2,00'], ans: 1, exp: R`$\text{Cash Ratio} = \frac{40 + 20}{120} = 0,50$.` },
+        { tag: 'Bài tập Ch.4', q: 'EPS = 5.000đ, Tỷ lệ chi trả cổ tức = 60%. Cổ tức mỗi cổ phần (DPS) bằng:', opts: ['2.000đ', '3.000đ', '3.500đ', '2.500đ'], ans: 1, exp: R`$\text{DPS} = 5.000 \times 60\% = 3.000\text{đ}$.` },
+        { tag: 'Bài tập Ch.4', q: 'Vốn chủ sở hữu = 450 tỷ, Số lượng cổ phiếu đang lưu hành = 15 triệu CP, Thị giá = 60.000đ. Hệ số P/B bằng:', opts: ['1,5 lần', '2,0 lần', '2,5 lần', '3,0 lần'], ans: 1, exp: R`$\text{BVPS} = \frac{450\text{ tỷ}}{15\text{ triệu}} = 30.000\text{đ} \Rightarrow P/B = \frac{60.000}{30.000} = 2,0\text{ lần}$.` },
+        { tag: 'Bài tập Ch.5', q: 'Ngành có $P/E$ bình quân = 12 lần. Công ty dự kiến $EPS = 4.500\text{đ}$. Thị giá ước tính theo P/E là:', opts: ['48.000đ', '54.000đ', '60.000đ', '50.000đ'], ans: 1, exp: R`$\text{Thị giá} = P/E \times EPS = 12 \times 4.500 = 54.000\text{đ}$.` },
+        { tag: 'Bẫy thi Ch.5', q: 'Trong công thức định giá $P/B$, mẫu số đúng của tỷ số này là:', opts: ['DPS (Cổ tức mỗi CP)', 'BVPS (Giá trị sổ sách mỗi CP)', 'EPS (Thu nhập mỗi CP)', 'Mệnh giá cổ phiếu'], ans: 1, exp: R`$P/B = \frac{\text{Thị giá}}{BVPS}$ (PDF trang 1 bị in nhầm mẫu số thành DPS).` },
+        { tag: 'Lý thuyết Ch.6', q: 'Khi định giá trái phiếu trả lãi bán niên (6 tháng/lần) kỳ hạn $n$ năm, lãi suất thị trường $r$/năm, số kỳ chiết khấu và lãi suất mỗi kỳ lần lượt là:', opts: ['n và r/2', '2n và r/2', '2n và 2r', 'n/2 và r/2'], ans: 1, exp: R`Trái phiếu bán niên trả lãi 2 lần/năm nên số kỳ là $2n$ và lãi suất mỗi kỳ là $r/2$.` },
+        { tag: 'Bài tập Ch.6', q: 'Trái phiếu có $MD = 5$, Độ lồi (Convexity) = 40. Nếu lãi suất tăng $dy = +1\%$ ($+0,01$), ước tính % thay đổi giá $dP/P$ là:', opts: ['-5,0%', '-4,8%', '-5,2%', '+4,8%'], ans: 1, exp: R`$\frac{dP}{P} = -5(0,01) + \frac{1}{2}(40)(0,01)^2 = -0,05 + 0,002 = -0,048 = -4,8\%$.` }
+      ],
+      4: [
+        { tag: 'Bài tập Ch.2', q: 'Tổng mức sinh lời sau 3 năm với $r_1 = 10\%, r_2 = 10\%, r_3 = 0\%$ là:', opts: ['1,20', '1,21', '1,331', '1,10'], ans: 1, exp: R`$\text{Tổng MSL} = (1,1)(1,1)(1,0) = 1,21$.` },
+        { tag: 'Bài tập Ch.2', q: 'Dữ liệu quá khứ 3 năm: $R_1 = 10\%, R_2 = 14\%, R_3 = 6\%$ (trung bình 10%). Phương sai mẫu $s^2$ bằng:', opts: ['0,0016', '0,00107', '0,0032', '0,04'], ans: 0, exp: R`$s^2 = \frac{1}{3-1}[0^2 + (0,04)^2 + (-0,04)^2] = \frac{0,0032}{2} = 0,0016$.` },
+        { tag: 'Bài tập Ch.4', q: 'Tổng vốn cổ đông = 700 tỷ, Nợ vay dài hạn = 300 tỷ (trong đó Trái phiếu = 200 tỷ). Chỉ số Trái phiếu bằng:', opts: ['20%', '30%', '28,6%', '70%'], ans: 0, exp: R`$\text{Tổng vốn dài hạn} = 700 + 300 = 1.000\text{ tỷ} \Rightarrow \text{Chỉ số TP} = \frac{200}{1.000} = 20\%$.` },
+        { tag: 'Bài tập Ch.4', q: 'Doanh thu = 500 tỷ, Chi phí = 380 tỷ, Khấu hao = 30 tỷ, Lãi vay = 15 tỷ. Giá trị EBIT và Thu nhập ròng lần lượt là:', opts: ['120 tỷ và 90 tỷ', '90 tỷ và 75 tỷ', '120 tỷ và 105 tỷ', '90 tỷ và 105 tỷ'], ans: 1, exp: R`$\text{EBITDA} = 120$, $\text{EBIT} = 120 - 30 = 90\text{ tỷ}$, $\text{TN ròng} = 90 - 15 = 75\text{ tỷ}$.` },
+        { tag: 'Bài tập Ch.4', q: 'Lợi nhuận sau thuế = 45 tỷ, Doanh thu thuần = 300 tỷ. TSSL trên Doanh thu thuần (ROS) bằng:', opts: ['12%', '15%', '18%', '20%'], ans: 1, exp: R`$ROS = \frac{45}{300} \times 100\% = 15\%$.` },
+        { tag: 'Bài tập Ch.4', q: 'Thu nhập ròng = 90 tỷ, Cổ tức CPƯĐ = 15 tỷ. Chỉ số Bảo chứng tiền lãi Cổ phiếu ưu đãi bằng:', opts: ['5 lần', '6 lần', '7,5 lần', '4 lần'], ans: 1, exp: R`$\text{Bảo chứng lãi CPƯĐ} = \frac{90}{15} = 6\text{ lần}$.` },
+        { tag: 'Bài tập Ch.5', q: 'Cổ phiếu có Mệnh giá CPT = 100 tỷ, Vốn thặng dư = 60 tỷ, TNGL = 40 tỷ, số CP lưu hành = 10 triệu. Thư giá cổ phiếu là:', opts: ['10.000đ', '16.000đ', '20.000đ', '14.000đ'], ans: 2, exp: R`$\text{Thư giá} = \frac{100 + 60 + 40}{10\text{ triệu}} = 20.000\text{đ/CP}$.` },
+        { tag: 'Bài tập Ch.5', q: 'Từ năm thứ 3 trở đi cổ tức tăng đều $g = 5\%$/năm, biết $D_4 = 3.600\text{đ}$ và $r = 14\%$. Giá cổ phiếu tại cuối năm 3 ($P_3$) là:', opts: ['36.000đ', '40.000đ', '42.000đ', '30.000đ'], ans: 1, exp: R`$P_3 = \frac{D_4}{r - g} = \frac{3.600}{0,14 - 0,05} = 40.000\text{đ}$.` },
+        { tag: 'Lý thuyết Ch.6', q: 'Với Trái phiếu không hưởng lãi (Zero-Coupon Bond) kỳ hạn 5 năm, Thời gian đáo hạn bình quân Macaulay Duration ($D_m$) luôn bằng:', opts: ['Nhỏ hơn 5 năm', 'Đúng bằng 5 năm', 'Lớn hơn 5 năm', 'Bằng 0'], ans: 1, exp: R`Vì chỉ có 1 dòng tiền duy nhất ở năm cuối $n=5$, trọng số thời gian $D_m = 5$ năm.` },
+        { tag: 'Lý thuyết Ch.6', q: 'Điểm khác biệt cốt lõi khi tính YTC so với YTM là thay Mệnh giá $F$ bằng:', opts: ['Giá thị trường hiện tại', 'Giá thu hồi / chuộc lại Pc', 'Tiền lãi coupon C', 'Thư giá cổ phiếu'], ans: 1, exp: R`YTC tính đến thời điểm trái phiếu bị tổ chức phát hành thu hồi với giá $P_C$.` }
+      ],
+      5: [
+        { tag: 'Bài tập Ch.2', q: 'Mua cổ phiếu giá 50.000đ, bán giá 48.000đ và nhận cổ tức 5.000đ. Mức sinh lời tuyệt đối và phần trăm lần lượt là:', opts: ['3.000đ và 6%', '7.000đ và 14%', '-2.000đ và -4%', '3.000đ và 6,25%'], ans: 0, exp: R`Tuyệt đối $= 5.000 + (48.000 - 50.000) = 3.000\text{đ}$; Tỷ lệ $= \frac{3.000}{50.000} = 6\%$.` },
+        { tag: 'Bài tập Ch.2', q: 'Kịch bản: Xác suất 50% lãi 20%, xác suất 50% lãi 0% ($E(R)=10\%$). Phương sai dự đoán tương lai $\sigma^2$ bằng:', opts: ['0,01', '0,02', '0,10', '0,005'], ans: 0, exp: R`$\sigma^2 = 0,5(0,1-0,2)^2 + 0,5(0,1-0)^2 = 0,5(0,01) + 0,5(0,01) = 0,01$.` },
+        { tag: 'Bài tập Ch.4', q: 'Tổng TSLĐ = 420 tỷ, Tổng nợ ngắn hạn = 300 tỷ. Vốn huy động thuần và Chỉ số TSLĐ lần lượt là:', opts: ['120 tỷ và 1,4 lần', '120 tỷ và 0,71 lần', '720 tỷ và 1,4 lần', '100 tỷ và 1,2 lần'], ans: 0, exp: R`Vốn huy động thuần $= 420 - 300 = 120\text{ tỷ}$; Current Ratio $= \frac{420}{300} = 1,4$.` },
+        { tag: 'Bài tập Ch.4', q: 'Lợi nhuận sau thuế = 60 tỷ, Tổng tài sản bình quân = 500 tỷ, Đòn bẩy tài chính = 2 lần. ROA và ROE lần lượt là:', opts: ['12% và 24%', '10% và 20%', '12% và 18%', '15% và 30%'], ans: 0, exp: R`$ROA = \frac{60}{500} = 12\%$; $ROE = ROA \times \text{Đòn bẩy} = 12\% \times 2 = 24\%$.` },
+        { tag: 'Bài tập Ch.4', q: 'Thị giá cổ phiếu = 48.000đ, EPS = 6.000đ. Hệ số $P/E$ bằng:', opts: ['6 lần', '8 lần', '10 lần', '12 lần'], ans: 1, exp: R`$P/E = \frac{48.000}{6.000} = 8\text{ lần}$.` },
+        { tag: 'Bài tập Ch.4', q: 'Thu nhập ròng = 100 tỷ, Cổ tức ưu đãi = 10 tỷ, TNGL = 50 tỷ, Số CP lưu hành = 20 triệu. DPS bằng:', opts: ['2.000đ', '2.500đ', '4.500đ', '5.000đ'], ans: 0, exp: R`$\text{DPS} = \frac{100 - 10 - 50}{20\text{ triệu}} = \frac{40\text{ tỷ}}{20\text{ triệu}} = 2.000\text{đ}$.` },
+        { tag: 'Bài tập Ch.5', q: 'Vốn điều lệ = 200 tỷ, số lượng cổ phiếu đang lưu hành = 20 triệu CP. Mệnh giá mỗi cổ phiếu là:', opts: ['10.000đ', '20.000đ', '15.000đ', '5.000đ'], ans: 0, exp: R`$\text{Mệnh giá} = \frac{200\text{ tỷ}}{20\text{ triệu}} = 10.000\text{đ}$.` },
+        { tag: 'Bài tập Ch.6', q: 'Trái phiếu có $MD = 6$, Độ lồi = 50. Nếu lãi suất GIẢM $1\%$ ($dy = -0,01$), ước tính % thay đổi giá $dP/P$ là:', opts: ['+5,75%', '+6,25%', '-6,25%', '+6,00%'], ans: 1, exp: R`$\frac{dP}{P} = -6(-0,01) + \frac{1}{2}(50)(-0,01)^2 = +0,06 + 0,0025 = +6,25\%$.` },
+        { tag: 'Bài tập Ch.6', q: 'Trái phiếu kỳ hạn 1 năm, mệnh giá 1.000.000đ, lãi danh nghĩa 10%, lãi suất thị trường $r = 10\%$. Hiện giá PV bằng:', opts: ['909.091đ', '1.000.000đ', '1.100.000đ', '950.000đ'], ans: 1, exp: R`Khi lãi suất coupon = lãi suất thị trường ($10\%$), $PV = \frac{100.000 + 1.000.000}{1,1} = 1.000.000\text{đ} = F$.` },
+        { tag: 'Lý thuyết Ch.6', q: 'Khi lãi suất thị trường tăng lên, giá của trái phiếu có kỳ hạn hưởng lãi cố định sẽ:', opts: ['Tăng lên', 'Giảm xuống', 'Không đổi', 'Bằng mệnh giá'], ans: 1, exp: R`Giá trái phiếu và lãi suất thị trường có quan hệ nghịch biến ($dP/P \approx -MD \cdot dy$).` }
+      ]
+    };
+
+    const EXAM_META = [
+      { id: 1, focus: 'all', name: 'Đề số 01 — Tổng hợp Chuẩn UEH', desc: 'Cân bằng cả 4 chương: TSSL & Rủi ro, Thanh toán, Gordon DDM, Duration cơ bản.' },
+      { id: 2, focus: 'ch4', name: 'Đề số 02 — Chuyên sâu Phân tích Doanh nghiệp & DuPont', desc: 'Trọng tâm Chương 4: Thanh toán, Tạo vốn, Bảo chứng, EPS/DPS/BVPS, ROA, ROE DuPont & g.' },
+      { id: 3, focus: 'ch5', name: 'Đề số 03 — Chuyên sâu Định giá Cổ phiếu DDM, P/E, P/B', desc: 'Trọng tâm Chương 5 & Chương 2: Mệnh giá, Thư giá, 3 mô hình DDM, Pn, P/E, P/B & TSSL.' },
+      { id: 4, focus: 'ch6', name: 'Đề số 04 — Chuyên sâu Định giá Trái phiếu, Duration & Convexity', desc: 'Trọng tâm Chương 6: 4 loại Trái phiếu, Current Yield, YTM, YTC, Macaulay/Modified Duration & Độ lồi.' },
+      { id: 5, focus: 'all', name: 'Đề số 05 — Thi thử Cuối kỳ Toàn diện & Bẫy thi', desc: 'Tổng duyệt cường độ cao toàn bộ 63 công thức kèm các câu bẫy thi đính chính từ PDF.' }
+    ];
+
+    /* Deterministic pseudo-random generator so each of the 5 exams has its own unique 30 questions */
+    function seededRandom(seed) {
+      let s = seed % 2147483647;
+      if (s <= 0) s += 2147483646;
+      return () => {
+        s = (s * 16807) % 2147483647;
+        return (s - 1) / 2147483646;
+      };
+    }
+
+    function generateExam30(examId) {
+      const rand = seededRandom(examId * 9173 + 2026);
+      const meta = EXAM_META.find(e => e.id === examId);
+      const practical = PRACTICAL_QUESTIONS[examId].map(q => ({ ...q, isFormulaOpt: false }));
+
+      // Prioritize topic-specific formulas for themed exams (2, 3, 4), balanced for (1, 5)
+      let primary = [];
+      let secondary = [];
+      if (meta && meta.focus !== 'all') {
+        primary = FORMULAS.filter(f => f.chapter === meta.focus);
+        secondary = FORMULAS.filter(f => f.chapter !== meta.focus);
+      } else {
+        primary = [...FORMULAS];
+      }
+
+      const shuffleArr = (arr) => {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(rand() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      };
+
+      const orderedPool = [...shuffleArr(primary), ...shuffleArr(secondary)];
+      const chosen20 = orderedPool.slice(0, 20);
+
+      const formulaQs = chosen20.map((card, idx) => {
+        const isNameToFormula = idx % 2 === 0;
+        const sameChap = FORMULAS.filter(f => f.id !== card.id && f.chapter === card.chapter);
+        const otherChap = FORMULAS.filter(f => f.id !== card.id && f.chapter !== card.chapter);
+        const distractorPool = [...shuffleArr(sameChap), ...shuffleArr(otherChap)];
+        const distractors = distractorPool.slice(0, 3);
+        const optionsCards = shuffleArr([card, ...distractors]);
+        const ansIndex = optionsCards.findIndex(o => o.id === card.id);
+
+        if (isNameToFormula) {
+          return {
+            tag: `Công thức ${card.chapterLabel}`,
+            q: `Đâu là công thức đúng của chỉ tiêu: <strong>${card.title}</strong>?`,
+            opts: optionsCards.map(o => o.formula),
+            ans: ansIndex,
+            exp: `${card.title}: ${card.formula} ${card.trapNote ? '<br><strong>' + card.trapNote + '</strong>' : '<br>' + card.tip}`
+          };
+        } else {
+          return {
+            tag: `Nhận diện ${card.chapterLabel}`,
+            q: `Công thức dưới đây dùng để xác định chỉ tiêu nào?<div class="mt-2">${card.formula}</div>`,
+            opts: optionsCards.map(o => o.title),
+            ans: ansIndex,
+            exp: `Đây là công thức của <strong>${card.title}</strong> (${card.chapterLabel} — ${card.group}). ${card.vars}`
+          };
+        }
+      });
+
+      // Interleave practical & formula questions cleanly (total = 30)
+      const combined = [];
+      for (let i = 0; i < 10; i++) {
+        combined.push(formulaQs[i * 2]);
+        combined.push(practical[i]);
+        combined.push(formulaQs[i * 2 + 1]);
+      }
+      return combined;
+    }
+
+    /* =========================================================================
+       3. STATE & LOCALSTORAGE
+       ========================================================================= */
+    const LS_KEYS = {
+      progress: 'ueh_dgptck63_progress',
+      pins: 'ueh_dgptck63_pins',
+      examScores: 'ueh_dgptck63_examScores',
+      notes: 'ueh_dgptck63_notes',
+      theme: 'ueh_dgptck63_theme'
+    };
+
+    const state = {
+      view: 'home',
+      progress: {},     // { [id]: 'mastered' | 'review' }
+      pins: {},         // { [id]: true }
+      examScores: {},   // { [examId]: { bestScore10, correct } }
+      notes: [],        // [{ id, formulaId, title, body, updatedAt }]
+      fc: {
+        chapter: 'all',
+        status: 'all',
+        search: '',
+        deck: [],
+        index: 0,
+        flipped: false
+      },
+      exam: {
+        active: false,
+        examId: 1,
+        questions: [],
+        answers: {},    // { [qIndex]: optIndex }
+        currentQ: 0,
+        submitted: false,
+        timeLeft: 1800,
+        timerId: null
+      },
+      notesUI: {
+        subtab: 'cheatsheet',
+        search: '',
+        trapOnly: false
+      },
+      chat: {
+        open: false,
+        busy: false,
+        history: []
+      },
+      pendingConfirm: null
+    };
+
+    function loadAllStorage() {
+      try {
+        state.progress = JSON.parse(localStorage.getItem(LS_KEYS.progress) || '{}');
+        state.pins = JSON.parse(localStorage.getItem(LS_KEYS.pins) || '{}');
+        state.examScores = JSON.parse(localStorage.getItem(LS_KEYS.examScores) || '{}');
+        state.notes = JSON.parse(localStorage.getItem(LS_KEYS.notes) || '[]');
+      } catch (e) { console.warn(e); }
+    }
+
+    function saveStorage(key, val) {
+      try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+    }
+
+    /* =========================================================================
+       4. UTILITIES: KATEX, TOAST, THEME, CINEMA MODE, MODAL
+       ========================================================================= */
+    function renderMath(el) {
+      if (!el) return;
+      if (typeof window.renderMathInElement === 'function') {
+        try {
+          window.renderMathInElement(el, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            throwOnError: false,
+            strict: false
+          });
+        } catch (e) {}
+      } else {
+        setTimeout(() => renderMath(el), 160);
+      }
+    }
+
+    let toastTimeout = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.remove('translate-y-24', 'opacity-0');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => el.classList.add('translate-y-24', 'opacity-0'), 2400);
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      document.getElementById('icon-sun').classList.toggle('hidden', !isDark);
+      document.getElementById('icon-moon').classList.toggle('hidden', isDark);
+      saveStorage(LS_KEYS.theme, isDark ? 'dark' : 'light');
+    }
+
+    function toggleCinemaMode() {
+      const on = document.body.classList.toggle('cinema-mode');
+      showToast(on ? '🎬 Đã bật Cinema Mode: Ngắm trọn khuôn viên UEH!' : 'Đã tắt Cinema Mode');
+    }
+
+    function openConfirmModal(action) {
+      state.pendingConfirm = action;
+      const modal = document.getElementById('confirm-modal');
+      const title = document.getElementById('confirm-title');
+      const desc = document.getElementById('confirm-desc');
+
+      if (action === 'resetProgress') {
+        title.textContent = 'Đặt lại tiến độ 63 Flashcards?';
+        desc.textContent = 'Toàn bộ trạng thái Đã thuộc, Cần ôn lại và Thẻ đã ghim sẽ được xóa về mặc định.';
+      } else if (action === 'submitExam') {
+        const answeredCount = Object.keys(state.exam.answers).length;
+        title.textContent = 'Nộp bài thi ngay bây giờ?';
+        desc.textContent = answeredCount < 30
+          ? `Bạn mới chọn ${answeredCount}/30 câu. Bạn vẫn muốn nộp bài và chấm điểm chứ?`
+          : 'Bạn đã hoàn thành đủ 30/30 câu! Xác nhận nộp bài để xem điểm thang 10 và lời giải chi tiết.';
+      } else if (action === 'exitExam') {
+        title.textContent = 'Thoát khỏi bài thi đang làm?';
+        desc.textContent = 'Tiến trình bài làm hiện tại chưa nộp sẽ không được lưu.';
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeConfirmModal() {
+      const modal = document.getElementById('confirm-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      state.pendingConfirm = null;
+    }
+
+    document.getElementById('confirm-ok-btn').addEventListener('click', () => {
+      const act = state.pendingConfirm;
+      closeConfirmModal();
+      if (act === 'resetProgress') {
+        state.progress = {};
+        state.pins = {};
+        saveStorage(LS_KEYS.progress, state.progress);
+        saveStorage(LS_KEYS.pins, state.pins);
+        updateHomeStats();
+        applyFcFilters();
+        showToast('Đã đặt lại tiến độ 63 thẻ!');
+      } else if (act === 'submitExam') {
+        submitExam();
+      } else if (act === 'exitExam') {
+        exitExamToLobby();
+      }
+    });
+
+    /* =========================================================================
+       5. NAVIGATION & HOME DASHBOARD
+       ========================================================================= */
+    function switchView(viewName) {
+      state.view = viewName;
+      ['home', 'flashcards', 'exams', 'notes', 'ai'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.toggle('hidden', v !== viewName);
+      });
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const active = btn.dataset.nav === viewName;
+        btn.className = 'nav-btn px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ' + (
+          active
+            ? 'bg-ueh-teal text-white shadow-md shadow-ueh-teal/30'
+            : 'text-slate-700 dark:text-teal-100 hover:bg-white/15'
+        );
+      });
+
+      if (viewName === 'home') updateHomeStats();
+      if (viewName === 'flashcards') applyFcFilters();
+      if (viewName === 'exams') renderExamLobby();
+      if (viewName === 'notes') renderNotesView();
+      if (viewName === 'ai') {
+        toggleChat(false);
+        ensureAiWelcome();
+        setTimeout(() => document.getElementById('ai-full-input')?.focus(), 100);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function jumpToChapter(ch) {
+      state.fc.chapter = ch;
+      state.fc.status = 'all';
+      switchView('flashcards');
+    }
+
+    function updateHomeStats() {
+      const mastered = FORMULAS.filter(f => state.progress[f.id] === 'mastered').length;
+      const review = FORMULAS.filter(f => state.progress[f.id] === 'review').length;
+      const pinned = Object.keys(state.pins).filter(k => state.pins[k]).length;
+      const pct = Math.round((mastered / FORMULAS.length) * 100);
+
+      document.getElementById('stat-mastered').textContent = `${mastered} / 63`;
+      document.getElementById('stat-mastered-pct').textContent = `${pct}%`;
+      document.getElementById('stat-mastered-bar').style.width = `${pct}%`;
+      document.getElementById('stat-review-pin').textContent = `${review} / ${pinned}`;
+
+      const scores = Object.values(state.examScores);
+      if (scores.length > 0) {
+        const best = Math.max(...scores.map(s => s.bestScore10));
+        document.getElementById('stat-best-exam').textContent = `${best.toFixed(2)} / 10`;
+        document.getElementById('stat-exams-done').textContent = `Đã hoàn thành ${scores.length}/5 đề thi`;
+      } else {
+        document.getElementById('stat-best-exam').textContent = '— / 10';
+        document.getElementById('stat-exams-done').textContent = 'Đã hoàn thành 0/5 đề thi';
+      }
+
+      document.getElementById('stat-notes-count').textContent = String(state.notes.length);
+    }
+
+    // Subtle 3D Tilt & Campus Image Parallax on Hero Card
+    const heroCard = document.getElementById('hero-card');
+    const heroParallaxImg = document.getElementById('hero-parallax-img');
+    heroCard.addEventListener('mousemove', (e) => {
+      if (window.innerWidth < 1024) return;
+      const rect = heroCard.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      heroCard.style.transform = `perspective(1200px) rotateX(${(-y * 3.5).toFixed(2)}deg) rotateY(${(x * 3.5).toFixed(2)}deg)`;
+      if (heroParallaxImg) {
+        heroParallaxImg.style.transform = `scale(1.09) translate3d(${(-x * 16).toFixed(1)}px, ${(-y * 12).toFixed(1)}px, 0)`;
+      }
+    });
+    heroCard.addEventListener('mouseleave', () => {
+      heroCard.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+      if (heroParallaxImg) {
+        heroParallaxImg.style.transform = 'scale(1.05) translate3d(0, 0, 0)';
+      }
+    });
+
+    /* =========================================================================
+       6. FLASHCARDS 3D ENGINE (63 CARDS)
+       ========================================================================= */
+    function renderFcFilterControls() {
+      const chFilters = [
+        { id: 'all', label: 'Tất cả (63)' },
+        { id: 'ch2', label: 'Ch.2 (11)' },
+        { id: 'ch4', label: 'Ch.4 (34)' },
+        { id: 'ch5', label: 'Ch.5 (7)' },
+        { id: 'ch6', label: 'Ch.6 (11)' }
+      ];
+      document.getElementById('fc-chapter-filters').innerHTML = chFilters.map(f => `
+        <button type="button" onclick="state.fc.chapter='${f.id}'; applyFcFilters();"
+          class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all border ${
+            state.fc.chapter === f.id
+              ? 'bg-ueh-teal text-white border-ueh-teal shadow'
+              : 'bg-white/10 dark:text-teal-100 text-slate-700 border-white/15 hover:bg-white/20'
+          }">${f.label}</button>
+      `).join('');
+
+      const stFilters = [
+        { id: 'all', label: 'Mọi trạng thái' },
+        { id: 'review', label: '↺ Cần ôn' },
+        { id: 'unlearned', label: 'Chưa thuộc' },
+        { id: 'mastered', label: '✓ Đã thuộc' },
+        { id: 'pinned', label: '📌 Đã ghim' }
+      ];
+      document.getElementById('fc-status-filters').innerHTML = stFilters.map(s => `
+        <button type="button" onclick="state.fc.status='${s.id}'; applyFcFilters();"
+          class="px-3 py-1 rounded-full text-xs font-bold transition-all border ${
+            state.fc.status === s.id
+              ? 'bg-ueh-orange text-white border-ueh-orange'
+              : 'bg-white/10 dark:text-teal-100 text-slate-700 border-white/15 hover:bg-white/20'
+          }">${s.label}</button>
+      `).join('');
+    }
+
+    function applyFcFilters() {
+      renderFcFilterControls();
+      const q = state.fc.search.trim().toLowerCase();
+      state.fc.deck = FORMULAS.filter(c => {
+        if (state.fc.chapter !== 'all' && c.chapter !== state.fc.chapter) return false;
+        if (state.fc.status === 'review' && state.progress[c.id] !== 'review') return false;
+        if (state.fc.status === 'mastered' && state.progress[c.id] !== 'mastered') return false;
+        if (state.fc.status === 'unlearned' && state.progress[c.id] === 'mastered') return false;
+        if (state.fc.status === 'pinned' && !state.pins[c.id]) return false;
+        if (q && !(c.title.toLowerCase().includes(q) || c.group.toLowerCase().includes(q) || c.hint.toLowerCase().includes(q))) return false;
+        return true;
+      });
+      state.fc.index = 0;
+      state.fc.flipped = false;
+      renderCurrentFlashcard();
+    }
+
+    function renderCurrentFlashcard() {
+      const stage = document.getElementById('fc-stage');
+      const empty = document.getElementById('fc-empty');
+      const counter = document.getElementById('fc-counter');
+
+      if (!state.fc.deck.length) {
+        stage.classList.add('hidden');
+        empty.classList.remove('hidden');
+        counter.textContent = '0 / 0 thẻ';
+        return;
+      }
+
+      stage.classList.remove('hidden');
+      empty.classList.add('hidden');
+      if (state.fc.index >= state.fc.deck.length) state.fc.index = 0;
+      if (state.fc.index < 0) state.fc.index = state.fc.deck.length - 1;
+
+      const c = state.fc.deck[state.fc.index];
+      counter.textContent = `Thẻ ${state.fc.index + 1} / ${state.fc.deck.length}`;
+      document.getElementById('fc-inner').classList.toggle('is-flipped', state.fc.flipped);
+
+      document.getElementById('fc-front-chapter').textContent = c.chapterLabel;
+      document.getElementById('fc-front-group').textContent = c.group;
+      document.getElementById('fc-front-id').textContent = `#${String(c.id).padStart(2, '0')}`;
+      document.getElementById('fc-front-title').textContent = c.title;
+      document.getElementById('fc-front-hint').textContent = c.hint;
+
+      const pinBtn = document.getElementById('btn-fc-pin');
+      pinBtn.classList.toggle('bg-ueh-orange', !!state.pins[c.id]);
+
+      const stBadge = document.getElementById('fc-front-status');
+      if (state.progress[c.id] === 'mastered') {
+        stBadge.className = 'px-2.5 py-1 rounded-full text-xs font-extrabold bg-emerald-500 text-white';
+        stBadge.textContent = '✓ Đã thuộc';
+      } else if (state.progress[c.id] === 'review') {
+        stBadge.className = 'px-2.5 py-1 rounded-full text-xs font-extrabold bg-ueh-orange text-white';
+        stBadge.textContent = '↺ Cần ôn lại';
+      } else {
+        stBadge.className = 'hidden';
+      }
+
+      // Back face
+      document.getElementById('fc-back-title').textContent = c.title;
+      const formulaEl = document.getElementById('fc-back-formula');
+      formulaEl.innerHTML = c.formula;
+      document.getElementById('fc-back-vars').innerHTML = `<strong>Ý nghĩa biến số:</strong> ${c.vars}`;
+      document.getElementById('fc-back-tip').innerHTML = `<strong>💡 ${c.tip}</strong>`;
+
+      const trapEl = document.getElementById('fc-back-trap');
+      if (c.isTrap) {
+        trapEl.classList.remove('hidden');
+        trapEl.innerHTML = `⚠️ <strong>${c.trapNote}</strong>`;
+      } else {
+        trapEl.classList.add('hidden');
+      }
+
+      renderMath(formulaEl);
+    }
+
+    function flipFlashcard() {
+      if (!state.fc.deck.length) return;
+      state.fc.flipped = !state.fc.flipped;
+      document.getElementById('fc-inner').classList.toggle('is-flipped', state.fc.flipped);
+    }
+
+    function nextFlashcard() {
+      if (!state.fc.deck.length) return;
+      state.fc.flipped = false;
+      state.fc.index = (state.fc.index + 1) % state.fc.deck.length;
+      renderCurrentFlashcard();
+    }
+
+    function prevFlashcard() {
+      if (!state.fc.deck.length) return;
+      state.fc.flipped = false;
+      state.fc.index = (state.fc.index - 1 + state.fc.deck.length) % state.fc.deck.length;
+      renderCurrentFlashcard();
+    }
+
+    function markCard(status) {
+      if (!state.fc.deck.length) return;
+      const c = state.fc.deck[state.fc.index];
+      state.progress[c.id] = status;
+      saveStorage(LS_KEYS.progress, state.progress);
+      updateHomeStats();
+      showToast(status === 'mastered' ? `✓ Đã đánh dấu thuộc #${c.id}!` : `↺ Đã thêm #${c.id} vào mục Cần ôn!`);
+      nextFlashcard();
+    }
+
+    function togglePinCurrent() {
+      if (!state.fc.deck.length) return;
+      const c = state.fc.deck[state.fc.index];
+      state.pins[c.id] = !state.pins[c.id];
+      if (!state.pins[c.id]) delete state.pins[c.id];
+      saveStorage(LS_KEYS.pins, state.pins);
+      updateHomeStats();
+      renderCurrentFlashcard();
+      showToast(state.pins[c.id] ? `📌 Đã ghim công thức #${c.id}` : `Đã bỏ ghim #${c.id}`);
+    }
+
+    function shuffleFlashcards() {
+      for (let i = state.fc.deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [state.fc.deck[i], state.fc.deck[j]] = [state.fc.deck[j], state.fc.deck[i]];
+      }
+      state.fc.index = 0;
+      state.fc.flipped = false;
+      renderCurrentFlashcard();
+      showToast('🔀 Đã xáo trộn bộ thẻ!');
+    }
+
+    function resetFcFilters() {
+      state.fc.chapter = 'all';
+      state.fc.status = 'all';
+      state.fc.search = '';
+      document.getElementById('fc-search').value = '';
+      applyFcFilters();
+    }
+
+    function askAiAboutCurrentCard() {
+      if (!state.fc.deck.length) return;
+      const c = state.fc.deck[state.fc.index];
+      toggleChat(true);
+      sendQuickPrompt(`Giải thích dễ hiểu công thức #${c.id} "${c.title}" (${c.chapterLabel}) và cho 1 ví dụ tính nhanh.`);
+    }
+
+    document.getElementById('fc-wrapper').addEventListener('click', flipFlashcard);
+    document.getElementById('fc-search').addEventListener('input', (e) => {
+      state.fc.search = e.target.value;
+      applyFcFilters();
+    });
+
+    /* =========================================================================
+       7. 5 EXAMS × 30 QUESTIONS ENGINE
+       ========================================================================= */
+    function renderExamLobby() {
+      if (state.exam.active) return;
+      document.getElementById('exam-lobby').classList.remove('hidden');
+      document.getElementById('exam-runner').classList.add('hidden');
+
+      const grid = document.getElementById('exam-cards-grid');
+      grid.innerHTML = EXAM_META.map(ex => {
+        const rec = state.examScores[ex.id];
+        return `
+          <div class="glass-panel rounded-3xl p-5 sm:p-6 flex flex-col justify-between gap-4 hover:-translate-y-1 transition-all">
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-ueh-teal text-white">30 CÂU • 30 PHÚT</span>
+                ${rec
+                  ? `<span class="px-2.5 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-400 border border-emerald-400/30">Cao nhất: ${rec.bestScore10.toFixed(2)}/10</span>`
+                  : `<span class="text-xs font-bold opacity-60">Chưa làm</span>`
+                }
+              </div>
+              <h3 class="text-lg font-black text-slate-900 dark:text-white">${ex.name}</h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-teal-100/80 leading-relaxed">${ex.desc}</p>
+            </div>
+            <button type="button" onclick="startExam(${ex.id})"
+              class="w-full py-3 rounded-2xl bg-gradient-to-r from-ueh-orange to-ueh-orangeBright hover:brightness-110 text-white font-extrabold text-sm shadow-lg shadow-ueh-orange/25 transition-all active:scale-95">
+              ${rec ? 'Làm lại Đề số ' + ex.id : 'Bắt đầu làm Đề số ' + ex.id} →
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function startExam(examId) {
+      clearInterval(state.exam.timerId);
+      state.exam = {
+        active: true,
+        examId,
+        questions: generateExam30(examId),
+        answers: {},
+        currentQ: 0,
+        submitted: false,
+        timeLeft: 30 * 60,
+        timerId: null
+      };
+
+      const meta = EXAM_META.find(e => e.id === examId);
+      document.getElementById('exam-lobby').classList.add('hidden');
+      document.getElementById('exam-runner').classList.remove('hidden');
+      document.getElementById('exam-run-title').textContent = meta.name;
+      document.getElementById('exam-result-banner').classList.add('hidden');
+      document.getElementById('btn-submit-exam').classList.remove('hidden');
+      document.getElementById('btn-retake-exam').classList.add('hidden');
+
+      updateExamTimerUI();
+      state.exam.timerId = setInterval(() => {
+        if (state.exam.submitted) return clearInterval(state.exam.timerId);
+        state.exam.timeLeft--;
+        updateExamTimerUI();
+        if (state.exam.timeLeft <= 0) {
+          clearInterval(state.exam.timerId);
+          showToast('⏰ Đã hết 30 phút! Hệ thống tự động nộp bài.');
+          submitExam();
+        }
+      }, 1000);
+
+      renderExamQuestion();
+      renderExamMap();
+    }
+
+    function updateExamTimerUI() {
+      const m = Math.floor(state.exam.timeLeft / 60);
+      const s = state.exam.timeLeft % 60;
+      document.getElementById('exam-timer').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function renderExamQuestion() {
+      const idx = state.exam.currentQ;
+      const q = state.exam.questions[idx];
+      const chosen = state.exam.answers[idx];
+      const submitted = state.exam.submitted;
+
+      document.getElementById('exam-q-num').textContent = `Câu ${idx + 1} / 30`;
+      document.getElementById('exam-q-tag').textContent = q.tag;
+      document.getElementById('exam-run-progress').textContent = `Đã làm: ${Object.keys(state.exam.answers).length} / 30 câu`;
+
+      const qText = document.getElementById('exam-q-text');
+      qText.innerHTML = q.q;
+      renderMath(qText);
+
+      const letters = ['A', 'B', 'C', 'D'];
+      const optsEl = document.getElementById('exam-options');
+      optsEl.innerHTML = q.opts.map((opt, oIdx) => {
+        let style = 'border-white/20 bg-white/10 dark:bg-white/5 bg-white/80 hover:border-ueh-orange';
+        if (!submitted && chosen === oIdx) {
+          style = 'border-ueh-orange bg-ueh-orange/25 shadow-md';
+        } else if (submitted) {
+          if (oIdx === q.ans) style = 'border-emerald-400 bg-emerald-500/25';
+          else if (chosen === oIdx && oIdx !== q.ans) style = 'border-rose-400 bg-rose-500/25';
+          else style = 'border-white/10 opacity-60';
+        }
+
+        return `
+          <button type="button" ${submitted ? 'disabled' : `onclick="selectExamOption(${oIdx})"`}
+            class="w-full text-left p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-center gap-3 overflow-x-auto ${style}">
+            <span class="w-8 h-8 rounded-xl bg-ueh-teal text-white font-black text-sm flex items-center justify-center shrink-0">${letters[oIdx]}</span>
+            <div class="flex-1 text-sm sm:text-base font-semibold overflow-x-auto">${opt}</div>
+          </button>
+        `;
+      }).join('');
+      renderMath(optsEl);
+
+      const expBox = document.getElementById('exam-explanation');
+      if (submitted) {
+        expBox.classList.remove('hidden');
+        const expText = document.getElementById('exam-explanation-text');
+        expText.innerHTML = q.exp;
+        renderMath(expText);
+      } else {
+        expBox.classList.add('hidden');
+      }
+    }
+
+    function selectExamOption(optIdx) {
+      if (state.exam.submitted) return;
+      state.exam.answers[state.exam.currentQ] = optIdx;
+      renderExamQuestion();
+      renderExamMap();
+    }
+
+    function jumpExamQuestion(newIdx) {
+      if (newIdx < 0) newIdx = 29;
+      if (newIdx > 29) newIdx = 0;
+      state.exam.currentQ = newIdx;
+      renderExamQuestion();
+      renderExamMap();
+    }
+
+    function renderExamMap() {
+      const mapEl = document.getElementById('exam-q-map');
+      mapEl.innerHTML = state.exam.questions.map((q, i) => {
+        const chosen = state.exam.answers[i];
+        const isCurrent = i === state.exam.currentQ;
+        let cls = 'bg-slate-200/80 dark:bg-white/10 text-slate-700 dark:text-white border-slate-300 dark:border-white/15';
+        if (state.exam.submitted) {
+          if (chosen === q.ans) cls = 'bg-emerald-500 text-white border-emerald-400';
+          else cls = 'bg-rose-500 text-white border-rose-400';
+        } else if (chosen !== undefined) {
+          cls = 'bg-ueh-teal text-white border-ueh-cyan';
+        }
+        if (isCurrent) cls += ' ring-2 ring-ueh-orange scale-105';
+        return `<button type="button" onclick="jumpExamQuestion(${i})" class="h-9 rounded-xl border text-xs font-extrabold transition-all ${cls}">${i + 1}</button>`;
+      }).join('');
+    }
+
+    function submitExam() {
+      clearInterval(state.exam.timerId);
+      state.exam.submitted = true;
+
+      let correct = 0;
+      state.exam.questions.forEach((q, i) => {
+        if (state.exam.answers[i] === q.ans) correct++;
+      });
+      const score10 = (correct / 30) * 10;
+
+      // Save highest score
+      const prev = state.examScores[state.exam.examId];
+      if (!prev || score10 > prev.bestScore10) {
+        state.examScores[state.exam.examId] = { bestScore10: score10, correct };
+        saveStorage(LS_KEYS.examScores, state.examScores);
+      }
+      updateHomeStats();
+
+      let grade = 'CẦN ÔN LẠI', emoji = '📚', badgeCls = 'bg-rose-500';
+      if (score10 >= 9.0) { grade = 'XUẤT SẮC'; emoji = '🏆'; badgeCls = 'bg-emerald-500'; }
+      else if (score10 >= 8.0) { grade = 'GIỎI'; emoji = '🌟'; badgeCls = 'bg-ueh-cyan'; }
+      else if (score10 >= 6.5) { grade = 'KHÁ'; emoji = '👍'; badgeCls = 'bg-ueh-orange'; }
+
+      document.getElementById('exam-grade-emoji').textContent = emoji;
+      const gLabel = document.getElementById('exam-grade-label');
+      gLabel.textContent = grade;
+      gLabel.className = `px-3 py-0.5 rounded-full text-xs font-extrabold text-white ${badgeCls}`;
+      document.getElementById('exam-correct-count').textContent = `${correct} / 30 câu đúng`;
+      document.getElementById('exam-score-10').textContent = `${score10.toFixed(2)} / 10`;
+
+      document.getElementById('exam-result-banner').classList.remove('hidden');
+      document.getElementById('btn-submit-exam').classList.add('hidden');
+      document.getElementById('btn-retake-exam').classList.remove('hidden');
+
+      renderExamQuestion();
+      renderExamMap();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function exitExamToLobby() {
+      clearInterval(state.exam.timerId);
+      state.exam.active = false;
+      renderExamLobby();
+    }
+
+    /* =========================================================================
+       8. QUICK STUDY CHEAT SHEET & PERSONAL NOTES
+       ========================================================================= */
+    function switchNoteSubtab(subtab) {
+      state.notesUI.subtab = subtab;
+      const isCS = subtab === 'cheatsheet';
+      document.getElementById('notes-cheatsheet').classList.toggle('hidden', !isCS);
+      document.getElementById('notes-notebook').classList.toggle('hidden', isCS);
+      document.getElementById('cheat-controls').classList.toggle('hidden', !isCS);
+
+      document.getElementById('subtab-cheat').className = 'px-4 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all ' + (isCS ? 'bg-ueh-teal text-white shadow' : 'opacity-75 hover:opacity-100');
+      document.getElementById('subtab-notebook').className = 'px-4 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all ' + (!isCS ? 'bg-ueh-orange text-white shadow' : 'opacity-75 hover:opacity-100');
+
+      renderNotesView();
+    }
+
+    function toggleTrapOnly() {
+      state.notesUI.trapOnly = !state.notesUI.trapOnly;
+      const btn = document.getElementById('btn-trap-only');
+      btn.classList.toggle('bg-ueh-orange', state.notesUI.trapOnly);
+      btn.classList.toggle('text-white', state.notesUI.trapOnly);
+      renderCheatSheet();
+    }
+
+    function renderNotesView() {
+      if (state.notesUI.subtab === 'cheatsheet') renderCheatSheet();
+      else renderPersonalNotebook();
+    }
+
+    function renderCheatSheet() {
+      const q = state.notesUI.search.trim().toLowerCase();
+      const chapters = [
+        { id: 'ch2', title: 'CHƯƠNG 2: MỨC SINH LỜI VÀ RỦI RO TRONG ĐẦU TƯ (11 công thức)' },
+        { id: 'ch4', title: 'CHƯƠNG 4: PHÂN TÍCH VÀ ĐÁNH GIÁ CÔNG TY (34 công thức)' },
+        { id: 'ch5', title: 'CHƯƠNG 5: PHÂN TÍCH VÀ ĐỊNH GIÁ CỔ PHIẾU (7 công thức)' },
+        { id: 'ch6', title: 'CHƯƠNG 6: PHÂN TÍCH VÀ ĐỊNH GIÁ TRÁI PHIẾU (11 công thức)' }
+      ];
+
+      const container = document.getElementById('notes-cheatsheet');
+      let html = '';
+
+      chapters.forEach(ch => {
+        const items = FORMULAS.filter(f => {
+          if (f.chapter !== ch.id) return false;
+          if (state.notesUI.trapOnly && !f.isTrap) return false;
+          if (q && !(f.title.toLowerCase().includes(q) || f.group.toLowerCase().includes(q) || f.vars.toLowerCase().includes(q))) return false;
+          return true;
+        });
+        if (!items.length) return;
+
+        html += `
+          <details open class="glass-panel rounded-3xl overflow-hidden">
+            <summary class="cursor-pointer px-5 py-4 font-black text-sm sm:text-base flex items-center justify-between bg-ueh-teal/35 hover:bg-ueh-teal/50 transition-colors select-none">
+              <span>${ch.title}</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs bg-white/20">${items.length} mục</span>
+            </summary>
+            <div class="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              ${items.map(f => `
+                <div class="rounded-2xl p-4 flex flex-col justify-between gap-2.5 border ${
+                  f.isTrap
+                    ? 'bg-ueh-orange/15 border-ueh-orange/60 shadow-lg shadow-ueh-orange/10'
+                    : 'bg-white/10 dark:bg-white/5 bg-white/85 border-white/15'
+                }">
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <span class="text-[10px] font-extrabold uppercase tracking-wider text-ueh-orange">${f.group}</span>
+                      <h4 class="font-extrabold text-sm sm:text-base leading-snug">#${f.id}. ${f.title}</h4>
+                    </div>
+                    <button type="button" onclick="quickNoteForFormula(${f.id})" title="Thêm ghi chú cá nhân cho công thức này"
+                      class="shrink-0 px-2.5 py-1 rounded-lg bg-white/15 hover:bg-ueh-orange text-[11px] font-bold transition-colors">
+                      + Note
+                    </button>
+                  </div>
+                  <div class="rounded-xl p-2.5 bg-white/95 dark:bg-slate-900/90 text-slate-900 dark:text-white text-center overflow-x-auto">${f.formula}</div>
+                  ${f.isTrap ? `<div class="text-xs font-bold text-ueh-orangeBright dark:text-orange-200 text-orange-900">⚠️ ${f.trapNote}</div>` : `<div class="text-xs opacity-80">${f.tip}</div>`}
+                </div>
+              `).join('')}
+            </div>
+          </details>
+        `;
+      });
+
+      container.innerHTML = html || `<div class="glass-panel rounded-2xl p-10 text-center opacity-80">Không tìm thấy công thức nào khớp điều kiện lọc.</div>`;
+      renderMath(container);
+    }
+
+    function populateFormulaDropdown() {
+      const sel = document.getElementById('note-formula-ref');
+      sel.innerHTML = `<option value="">— Ghi chú tự do (Không gắn công thức) —</option>` +
+        FORMULAS.map(f => `<option value="${f.id}">#${f.id} (${f.chapterLabel}) — ${f.title}</option>`).join('');
+    }
+
+    function quickNoteForFormula(formulaId) {
+      switchNoteSubtab('notebook');
+      const f = FORMULAS.find(x => x.id === formulaId);
+      document.getElementById('note-formula-ref').value = String(formulaId);
+      document.getElementById('note-title-input').value = `Ghi chú #${f.id}: ${f.title}`;
+      document.getElementById('note-body-input').focus();
+    }
+
+    function savePersonalNote() {
+      const editId = document.getElementById('note-edit-id').value;
+      const formulaId = document.getElementById('note-formula-ref').value;
+      const title = document.getElementById('note-title-input').value.trim();
+      const body = document.getElementById('note-body-input').value.trim();
+
+      if (!title || !body) {
+        showToast('Vui lòng nhập đầy đủ tiêu đề và nội dung ghi chú!');
+        return;
+      }
+
+      if (editId) {
+        const idx = state.notes.findIndex(n => String(n.id) === editId);
+        if (idx !== -1) {
+          state.notes[idx] = { ...state.notes[idx], formulaId, title, body, updatedAt: new Date().toLocaleString('vi-VN') };
+        }
+        showToast('✓ Đã cập nhật ghi chú!');
+      } else {
+        state.notes.unshift({
+          id: Date.now(),
+          formulaId,
+          title,
+          body,
+          updatedAt: new Date().toLocaleString('vi-VN')
+        });
+        showToast('✓ Đã lưu ghi chú mới!');
+      }
+
+      saveStorage(LS_KEYS.notes, state.notes);
+      clearNoteForm();
+      updateHomeStats();
+      renderPersonalNotebook();
+    }
+
+    function editPersonalNote(id) {
+      const n = state.notes.find(x => x.id === id);
+      if (!n) return;
+      document.getElementById('note-edit-id').value = String(n.id);
+      document.getElementById('note-formula-ref').value = n.formulaId || '';
+      document.getElementById('note-title-input').value = n.title;
+      document.getElementById('note-body-input').value = n.body;
+      document.getElementById('note-form-title').textContent = 'Chỉnh sửa ghi chú';
+      document.getElementById('btn-cancel-edit-note').classList.remove('hidden');
+    }
+
+    function deletePersonalNote(id) {
+      state.notes = state.notes.filter(x => x.id !== id);
+      saveStorage(LS_KEYS.notes, state.notes);
+      updateHomeStats();
+      renderPersonalNotebook();
+      showToast('Đã xóa ghi chú!');
+    }
+
+    function clearNoteForm() {
+      document.getElementById('note-edit-id').value = '';
+      document.getElementById('note-formula-ref').value = '';
+      document.getElementById('note-title-input').value = '';
+      document.getElementById('note-body-input').value = '';
+      document.getElementById('note-form-title').textContent = 'Thêm ghi chú học nhanh';
+      document.getElementById('btn-cancel-edit-note').classList.add('hidden');
+    }
+
+    function renderPersonalNotebook() {
+      document.getElementById('notebook-count-label').textContent = `Sổ tay của bạn (${state.notes.length} ghi chú)`;
+      const list = document.getElementById('notebook-list');
+      if (!state.notes.length) {
+        list.innerHTML = `<div class="glass-panel rounded-3xl p-8 text-center text-sm opacity-80">Chưa có ghi chú nào. Hãy thêm mẹo học nhanh ở khung bên trái nhé!</div>`;
+        return;
+      }
+
+      list.innerHTML = state.notes.map(n => {
+        const ref = n.formulaId ? FORMULAS.find(f => String(f.id) === String(n.formulaId)) : null;
+        return `
+          <div class="glass-panel rounded-2xl p-4 sm:p-5 space-y-2.5">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                ${ref ? `<span class="inline-block px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-ueh-teal text-white mb-1">#${ref.id} • ${ref.chapterLabel}</span>` : ''}
+                <h4 class="font-extrabold text-base">${escapeHtml(n.title)}</h4>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button type="button" onclick="editPersonalNote(${n.id})" class="px-2.5 py-1 rounded-lg bg-white/15 hover:bg-ueh-cyan text-xs font-bold">Sửa</button>
+                <button type="button" onclick="deletePersonalNote(${n.id})" class="px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500 text-rose-300 hover:text-white text-xs font-bold">Xóa</button>
+              </div>
+            </div>
+            <div class="text-sm whitespace-pre-line opacity-90 leading-relaxed">${escapeHtml(n.body)}</div>
+            <div class="text-[11px] opacity-60">Cập nhật: ${n.updatedAt}</div>
+          </div>
+        `;
+      }).join('');
+      renderMath(list);
+    }
+
+    function copyAllNotes() {
+      if (!state.notes.length) return showToast('Chưa có ghi chú nào để copy!');
+      const text = state.notes.map((n, i) => `${i + 1}. ${n.title}\n${n.body}\n`).join('\n---\n');
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('📋 Đã copy toàn bộ ghi chú vào Clipboard!');
+    }
+
+    function exportNotesTxt() {
+      if (!state.notes.length) return showToast('Chưa có ghi chú nào để xuất file!');
+      const text = `SỔ TAY GHI CHÚ UEH - ĐỊNH GIÁ & PHÂN TÍCH CHỨNG KHOÁN\n==================================================\n\n` +
+        state.notes.map((n, i) => `${i + 1}. ${n.title} (${n.updatedAt})\n${n.body}\n`).join('\n--------------------------------------------------\n\n');
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'UEH_DGPTCK_GhiChu.txt';
+      a.click();
+      showToast('⬇ Đã tải xuống file ghi chú!');
+    }
+
+    document.getElementById('cs-search').addEventListener('input', (e) => {
+      state.notesUI.search = e.target.value;
+      renderCheatSheet();
+    });
+
+    /* =========================================================================
+       9. UEH AI GIA SƯ CHATBOT (GEMINI API WITH EXPONENTIAL BACKOFF)
+       ========================================================================= */
+    const AI_SYSTEM_INSTRUCTION = `Bạn là "UEH AI Gia Sư" — trợ lý học tập chuyên sâu môn Định giá & Phân tích Chứng khoán (ĐG&PTCK) của Đại học Kinh tế TP.HCM (UEH).
+Nhiệm vụ của bạn: giải thích công thức, phân biệt chỉ số, chỉ rõ bẫy thi (các chỗ in nhầm trong PDF), và giải bài tập tính toán từng bước cực kỳ dễ hiểu, thân thiện, ngắn gọn bằng tiếng Việt.
+Luôn viết công thức toán học bằng cú pháp LaTeX đặt trong dấu $...$ (inline) hoặc $$...$$ (block) để KaTeX hiển thị sắc nét.
+
+Kiến thức cốt lõi gồm đủ 63 công thức của môn học:
+${FORMULAS.map(f => `${f.id}. [${f.chapterLabel} - ${f.group}] ${f.title}: ${f.formula.replace(/\$\$/g, '')}${f.isTrap ? ' | LƯU Ý ĐÍNH CHÍNH: ' + f.trapNote : ''}`).join('\n')}`;
+
+    function ensureAiWelcome() {
+      const box1 = document.getElementById('chat-messages');
+      const box2 = document.getElementById('ai-full-messages');
+      if (state.chat.history.length === 0 && box1.children.length === 0 && box2.children.length === 0) {
+        appendChatMessage('model', 'Chào bạn sinh viên UEH! 👋 Mình là **UEH AI Gia Sư** đã đọc hiểu trọn bộ **63 công thức ĐG&PTCK** (Chương 2, 4, 5, 6) và cả 3 lỗi in nhầm trong tài liệu PDF. Bạn cần mình giải thích công thức nào hay giải bài tập tính toán nào nè?');
+      }
+    }
+
+    function toggleChat(forceState) {
+      state.chat.open = typeof forceState === 'boolean' ? forceState : !state.chat.open;
+      const drawer = document.getElementById('chat-drawer');
+      drawer.classList.toggle('hidden', !state.chat.open);
+      drawer.classList.toggle('flex', state.chat.open);
+      if (state.chat.open) {
+        ensureAiWelcome();
+        setTimeout(() => document.getElementById('chat-input').focus(), 100);
+      }
+    }
+
+    function clearChatHistory() {
+      state.chat.history = [];
+      document.getElementById('chat-messages').innerHTML = '';
+      document.getElementById('ai-full-messages').innerHTML = '';
+      appendChatMessage('model', 'Đã làm mới cuộc trò chuyện! Bạn muốn ôn phần nào của môn ĐG&PTCK tiếp theo?');
+    }
+
+    function sendQuickPrompt(text) {
+      if (state.view === 'ai') {
+        document.getElementById('ai-full-input').value = text;
+        handleFullChatSubmit(new Event('submit'));
+      } else {
+        document.getElementById('chat-input').value = text;
+        handleChatSubmit(new Event('submit'));
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function formatBotMarkdown(text) {
+      let safe = escapeHtml(text);
+      safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      safe = safe.replace(/\n/g, '<br>');
+      return safe;
+    }
+
+    function appendChatMessage(role, text) {
+      ['chat-messages', 'ai-full-messages'].forEach(boxId => {
+        const box = document.getElementById(boxId);
+        if (!box) return;
+        const wrap = document.createElement('div');
+        wrap.className = role === 'user' ? 'flex justify-end' : 'flex justify-start';
+
+        const bubble = document.createElement('div');
+        bubble.className = role === 'user'
+          ? 'max-w-[85%] rounded-2xl rounded-br-sm px-3.5 py-2.5 bg-ueh-orange text-white text-xs sm:text-sm font-medium shadow'
+          : 'max-w-[90%] rounded-2xl rounded-bl-sm px-3.5 py-2.5 bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 text-xs sm:text-sm leading-relaxed border border-white/20 shadow overflow-x-auto';
+
+        bubble.innerHTML = role === 'user' ? escapeHtml(text) : formatBotMarkdown(text);
+        wrap.appendChild(bubble);
+        box.appendChild(wrap);
+        if (role === 'model') renderMath(bubble);
+        box.scrollTop = box.scrollHeight;
+      });
+    }
+
+    function showTypingIndicator(show) {
+      ['chat-messages', 'ai-full-messages'].forEach(boxId => {
+        const box = document.getElementById(boxId);
+        if (!box) return;
+        const existing = box.querySelector('.chat-typing-row');
+        if (show && !existing) {
+          const div = document.createElement('div');
+          div.className = 'chat-typing-row flex justify-start';
+          div.innerHTML = `
+            <div class="rounded-2xl px-4 py-3 bg-white/20 flex items-center gap-1.5">
+              <span class="typing-dot w-2 h-2 rounded-full bg-ueh-orange"></span>
+              <span class="typing-dot w-2 h-2 rounded-full bg-teal-300"></span>
+              <span class="typing-dot w-2 h-2 rounded-full bg-white"></span>
+            </div>`;
+          box.appendChild(div);
+          box.scrollTop = box.scrollHeight;
+        } else if (!show && existing) {
+          existing.remove();
+        }
+      });
+    }
+
+    async function callGeminiWithBackoff(userText) {
+      const apiKey = ""; // Canvas runtime automatically injects the key
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+      const contents = [
+        ...state.chat.history.slice(-8),
+        { role: 'user', parts: [{ text: userText }] }
+      ];
+
+      const payload = {
+        contents,
+        systemInstruction: { parts: [{ text: AI_SYSTEM_INSTRUCTION }] }
+      };
+
+      const delays = [1000, 2000, 4000];
+      for (let attempt = 0; attempt <= delays.length; attempt++) {
+        try {
+          const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) {
+            if (attempt < delays.length) {
+              await new Promise(r => setTimeout(r, delays[attempt]));
+              continue;
+            }
+            throw new Error('API Error ' + res.status);
+          }
+          const data = await res.json();
+          const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (reply) return reply;
+          throw new Error('Empty response');
+        } catch (err) {
+          if (attempt < delays.length) {
+            await new Promise(r => setTimeout(r, delays[attempt]));
+            continue;
+          }
+          return localSmartFallback(userText);
+        }
+      }
+    }
+
+    function localSmartFallback(query) {
+      const q = query.toLowerCase();
+      if (q.includes('lỗi') || q.includes('pdf') || q.includes('bẫy')) {
+        return 'Trong file PDF ĐG&PTCK có **3 chỗ bị gõ nhầm** rất dễ mất điểm:\n1. **Chỉ số thanh toán cổ tức (#35)**: PDF ghi EPS/DPS → Chuẩn là $\\frac{DPS}{EPS}$.\n2. **DDM tăng trưởng không đều (#50)**: PDF ghi mẫu số $(r\\%-g\\%)^t$ → Chuẩn là $(1+r)^t$.\n3. **Chỉ số P/B (#52)**: PDF trang 1 ghi mẫu số DPS → Chuẩn là $BVPS$.';
+      }
+      const match = FORMULAS.find(f => q.includes(f.title.toLowerCase()) || (q.includes('dupont') && f.id === 44) || (q.includes('ytm') && f.id === 58) || (q.includes('ytc') && f.id === 59) || (q.includes('ddm') && f.id === 50));
+      if (match) {
+        return `**${match.title}** (${match.chapterLabel}):\n${match.formula}\n- **Ý nghĩa:** ${match.vars}\n- **Mẹo nhớ:** ${match.tip}`;
+      }
+      return 'Hiện kết nối AI đang bận, bạn có thể thử hỏi lại sau vài giây hoặc tra cứu trực tiếp trong tab **Ghi chú → Cheat Sheet 63 Công Thức** nhé!';
+    }
+
+    async function processUserChatText(text) {
+      if (state.chat.busy || !text) return;
+      state.chat.busy = true;
+      appendChatMessage('user', text);
+      showTypingIndicator(true);
+
+      const reply = await callGeminiWithBackoff(text);
+      showTypingIndicator(false);
+      appendChatMessage('model', reply);
+
+      state.chat.history.push({ role: 'user', parts: [{ text }] });
+      state.chat.history.push({ role: 'model', parts: [{ text: reply }] });
+      state.chat.busy = false;
+    }
+
+    async function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      await processUserChatText(text);
+    }
+
+    async function handleFullChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('ai-full-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      await processUserChatText(text);
+    }
+
+    /* =========================================================================
+       10. KEYBOARD SHORTCUTS & TOUCH SWIPE & BOOTSTRAP
+       ========================================================================= */
+    document.addEventListener('keydown', (e) => {
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+      if (state.view !== 'flashcards') return;
+
+      if (e.code === 'Space') { e.preventDefault(); flipFlashcard(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); nextFlashcard(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prevFlashcard(); }
+      else if (e.key === '1') { e.preventDefault(); markCard('review'); }
+      else if (e.key === '2') { e.preventDefault(); markCard('mastered'); }
+    });
+
+    // Swipe support on Flashcard
+    let sx = 0, sy = 0;
+    const fcW = document.getElementById('fc-wrapper');
+    fcW.addEventListener('touchstart', e => { sx = e.changedTouches[0].screenX; sy = e.changedTouches[0].screenY; }, { passive: true });
+    fcW.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].screenX - sx;
+      const dy = e.changedTouches[0].screenY - sy;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        if (dx < 0) nextFlashcard(); else prevFlashcard();
+      }
+    }, { passive: true });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadAllStorage();
+      const savedTheme = localStorage.getItem(LS_KEYS.theme);
+      if (savedTheme === '"dark"') toggleTheme();
+      populateFormulaDropdown();
+      updateHomeStats();
+      switchView('home');
+    });
+  </script>
+</body>
+</html>
